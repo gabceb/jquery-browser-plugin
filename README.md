@@ -31,5 +31,5 @@ Reading the browser verion
 
 ## Attributions
 
-[Examples and original implementation](http://api.jquery.com/jQuery.browser/)
-[Original Gist used for the plugin](https://gist.github.com/adeelejaz/4714079)
+- [Examples and original implementation](http://api.jquery.com/jQuery.browser/)
+- [Original Gist used for the plugin](https://gist.github.com/adeelejaz/4714079)
