@@ -24,6 +24,14 @@ Reading the browser verion
     
     $.browser.version
 
+## Things not included in the original jQuery $.browser implementation
+
+Detect iPad, iPhone and Android useragents
+
+	$.browser.ipad
+	$.browser.iphone
+	$.browser.android
+
 ## Development
 
 - Source hosted at [GitHub](https://github.com/gabceb/jquery-browser-plugin)

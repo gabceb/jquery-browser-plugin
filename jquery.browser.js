@@ -12,10 +12,16 @@ jQuery.uaMatch = function( ua ) {
 		/(msie) ([\w.]+)/.exec( ua ) ||
 		ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
 		[];
+
+	var platform_match = /(ipad)/.exec( ua ) ||
+		/(iphone)/.exec( ua ) ||
+		/(android)/.exec( ua ) ||
+		[];
  
 	return {
 		browser: match[ 1 ] || "",
-		version: match[ 2 ] || "0"
+		version: match[ 2 ] || "0",
+		platform: platform_match[0] || ""
 	};
 };
  
@@ -25,6 +31,10 @@ browser = {};
 if ( matched.browser ) {
 	browser[ matched.browser ] = true;
 	browser.version = matched.version;
+}
+
+if ( matched.platform) {
+	browser[ matched.platform ] = true
 }
  
 // Chrome is Webkit, but Webkit is also Safari.
