@@ -10,6 +10,7 @@ jQuery.uaMatch = function( ua ) {
 		/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
 		/(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
 		/(msie) ([\w.]+)/.exec( ua ) ||
+		ua.indexOf("trident") && /(rv) ([\w.]+)/.exec( ua ) ||
 		ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
 		[];
 
@@ -42,6 +43,12 @@ if ( browser.chrome ) {
 	browser.webkit = true;
 } else if ( browser.webkit ) {
 	browser.safari = true;
+}
+
+// IE11 has a new token so we will assign it msie to avoid breaking changes
+if (browser.rv)
+{
+	browser.msie = true;
 }
  
 jQuery.browser = browser;
