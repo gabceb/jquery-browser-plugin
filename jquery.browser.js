@@ -1,3 +1,18 @@
+/*!
+ * jQuery Browser Plugin v0.0.2
+ * https://github.com/gabceb/jquery-browser-plugin
+ *
+ * Original jquery-browser code Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors
+ * http://jquery.org/license
+ *
+ * New functionality Copyright 2013 Gabriel Cebrian
+ * https://github.com/gabceb/jquery-browser-plugin/wiki/Authors
+ *
+ * Released under the MIT license
+ *
+ * Date: 2013-07-29T17:23:27-07:00
+ */
+
 (function( jQuery, window, undefined ) {
 "use strict";
  

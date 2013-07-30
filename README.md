@@ -8,7 +8,7 @@ Include script *after* the jQuery library:
 
 ## Usage
 
-Returns true if the current useragent is some version of Microsoft's Internet Explorer.
+Returns true if the current useragent is some version of Microsoft's Internet Explorer. Supports all IE versions including IE11
 
     $.browser.msie;
 
@@ -31,6 +31,8 @@ Detect iPad, iPhone and Android useragents
 	$.browser.ipad
 	$.browser.iphone
 	$.browser.android
+
+Support for new useragent on IE11
 
 ## Development
 
