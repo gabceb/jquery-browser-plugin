@@ -12,7 +12,7 @@ Returns true if the current useragent is some version of Microsoft's Internet Ex
 
     $.browser.msie;
 
-Returns true if the current useragent is some version of a Webkit browser (Safari, Chrome or soon Opera).
+Returns true if the current useragent is some version of a Webkit browser (Safari, Chrome and Opera 15+).
 
     $.browser.webkit;
 
@@ -26,13 +26,14 @@ Reading the browser verion
 
 ## Things not included in the original jQuery $.browser implementation
 
-Detect iPad, iPhone and Android useragents
+- Detect iPad, iPhone and Android useragents
 
 	$.browser.ipad
 	$.browser.iphone
 	$.browser.android
 
-Support for new useragent on IE11
+- Support for new useragent on IE11
+- Support for webkit based Opera browsers
 
 ## Development
 

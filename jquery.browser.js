@@ -21,7 +21,8 @@ var matched, browser;
 jQuery.uaMatch = function( ua ) {
   ua = ua.toLowerCase();
  
-	var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+	var match = /(opr)[\/]([\w.]+)/.exec( ua ) || 
+		/(chrome)[ \/]([\w.]+)/.exec( ua ) ||
 		/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
 		/(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
 		/(msie) ([\w.]+)/.exec( ua ) ||
@@ -53,8 +54,8 @@ if ( matched.platform) {
 	browser[ matched.platform ] = true
 }
  
-// Chrome is Webkit, but Webkit is also Safari.
-if ( browser.chrome ) {
+// Chrome and Opera 15+ are Webkit, but Webkit is also Safari.
+if ( browser.chrome || browser.opr) {
 	browser.webkit = true;
 } else if ( browser.webkit ) {
 	browser.safari = true;
@@ -64,6 +65,12 @@ if ( browser.chrome ) {
 if (browser.rv)
 {
 	browser.msie = true;
+}
+
+// Opera 15+ are identified as opr
+if (browser.opr)
+{
+	browser.opera = true;
 }
  
 jQuery.browser = browser;
