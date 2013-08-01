@@ -5,8 +5,8 @@
 # Original jquery-browser code Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors
 # http://jquery.org/license
 #
-# New functionality Copyright 2013 Gabriel Cebrian
-# https://github.com/gabceb/jquery-browser-plugin/wiki/Authors
+# Modifications Copyright 2013 Gabriel Cebrian
+# https://github.com/gabceb
 #
 # Released under the MIT license
 #
