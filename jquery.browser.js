@@ -33,6 +33,9 @@ jQuery.uaMatch = function( ua ) {
 	var platform_match = /(ipad)/.exec( ua ) ||
 		/(iphone)/.exec( ua ) ||
 		/(android)/.exec( ua ) ||
+		/(win)/.exec( ua ) ||
+		/(mac)/.exec( ua ) ||
+		/(linux)/.exec( ua ) ||
 		[];
  
 	return {
