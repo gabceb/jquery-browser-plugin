@@ -6,8 +6,9 @@
 
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.3.0/jasmine_favicon.png">
   <link rel="stylesheet" type="text/css" href="lib/jasmine-1.3.0/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.3.0/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.3.0/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/phantom-jasmine/console-runner.js"></script>
 
   <!-- include source files here... -->
   <script type="text/javascript" src="src/jquery.min.js"></script>
@@ -29,6 +30,10 @@
       jasmineEnv.specFilter = function(spec) {
         return htmlReporter.specFilter(spec);
       };
+
+      window.consoleReporter = new jasmine.ConsoleReporter();
+
+      jasmineEnv.addReporter(consoleReporter);
 
       var currentWindowOnload = window.onload;
 

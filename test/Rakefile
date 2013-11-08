@@ -1,0 +1,9 @@
+require 'rubygems'
+require 'bundler/setup'
+
+
+desc 'Run Jasmine tests with Phantomjs'
+task :phantomjs do
+  # Note: we are assuming phantomjs is installed and available in $PATH
+  sh %{phantomjs lib/phantom-jasmine/run_jasmine_test.coffee SpecRunner.html}
+end

@@ -23,6 +23,7 @@ jQuery.uaMatch = function( ua ) {
  
 	var match = /(opr)[\/]([\w.]+)/.exec( ua ) || 
 		/(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+		/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(ua) ||
 		/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
 		/(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
 		/(msie) ([\w.]+)/.exec( ua ) ||
@@ -39,7 +40,7 @@ jQuery.uaMatch = function( ua ) {
 		[];
  
 	return {
-		browser: match[ 1 ] || "",
+		browser: match[ 3 ] || match[ 1 ] || "",
 		version: match[ 2 ] || "0",
 		platform: platform_match[0] || ""
 	};
@@ -57,11 +58,9 @@ if ( matched.platform) {
 	browser[ matched.platform ] = true
 }
  
-// Chrome and Opera 15+ are Webkit, but Webkit is also Safari.
-if ( browser.chrome || browser.opr) {
+// Chrome, Opera 15+ and Safari are webkit based browsers
+if ( browser.chrome || browser.opr || browser.safari) {
 	browser.webkit = true;
-} else if ( browser.webkit ) {
-	browser.safari = true;
 }
 
 // IE11 has a new token so we will assign it msie to avoid breaking changes
