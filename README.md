@@ -40,6 +40,18 @@ Reading the browser verion
 - Support for new useragent on IE11
 - Support for webkit based Opera browsers
 
+## Testing
+
+Testing for this plugin is done with [Casperjs v1.1](http://casperjs.org/) to take advantage of multiple phantomjs browsers with different user agents.
+
+For instructions on how to install [Casperjs v1.1](http://casperjs.org/) go to http://docs.casperjs.org/en/latest/installation.html
+
+**Note: Testing requires Casperjs v1.1**
+
+Once Casperjs is properly installed you can execute the tests using:
+
+	casperjs test test/test.js
+
 ## Development
 
 - Source hosted at [GitHub](https://github.com/gabceb/jquery-browser-plugin)
