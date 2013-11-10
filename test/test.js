@@ -23,9 +23,16 @@ ua = {
 		v_11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
 	},
   opera : {
-    mac : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36 OPR/15.0.1147.18",
-    windows: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36 OPR/15.0.1147.18",
-    version: "15.0.1147.18"
+    v_15: {
+      mac : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36 OPR/15.0.1147.18",
+      windows: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36 OPR/15.0.1147.18",
+      version: "15.0.1147.18"
+    },
+    v_10: {
+      mac : "Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.00",
+      windows: "Opera/9.80 (Windows NT 6.1; U; en) Presto/2.6.30 Version/10.00",
+      version: "10.00"
+    }
   }
 }
 
@@ -234,7 +241,7 @@ casper.test.begin("when using IE11", 4, function(test) {
 });
 
 casper.test.begin("when using Opera 15+ on Windows", 4, function(test) {
-  casper.userAgent(ua.opera.windows);
+  casper.userAgent(ua.opera.v_15.windows);
 
   casper.start(test_url).then(function(){
     
@@ -243,7 +250,7 @@ casper.test.begin("when using Opera 15+ on Windows", 4, function(test) {
     });
     
     test.assert(browser.opera, "Browser should be Opera");
-    test.assertEquals(browser.version, ua.opera.version);
+    test.assertEquals(browser.version, ua.opera.v_15.version);
     test.assert(browser.win, "Platform should be Windows");
 
     test.assert(browser.webkit, "Browser should be webkit based");
@@ -254,7 +261,7 @@ casper.test.begin("when using Opera 15+ on Windows", 4, function(test) {
 });
 
 casper.test.begin("when using Opera 15+ on Mac", 4, function(test) {
-  casper.userAgent(ua.opera.mac);
+  casper.userAgent(ua.opera.v_15.mac);
 
   casper.start(test_url).then(function(){
     
@@ -263,10 +270,50 @@ casper.test.begin("when using Opera 15+ on Mac", 4, function(test) {
     });
     
     test.assert(browser.opera, "Browser should be Opera");
-    test.assertEquals(browser.version, ua.opera.version);
+    test.assertEquals(browser.version, ua.opera.v_15.version);
     test.assert(browser.mac, "Platform should be Mac");
 
     test.assert(browser.webkit, "Browser should be webkit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Opera 10 on Windows", 4, function(test) {
+  casper.userAgent(ua.opera.v_10.windows);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.opera, "Browser should be Opera");
+    test.assertEquals(browser.version, ua.opera.v_10.version);
+    test.assert(browser.win, "Platform should be Windows");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Opera 10 on Mac", 4, function(test) {
+  casper.userAgent(ua.opera.v_10.mac);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.opera, "Browser should be Opera");
+    test.assertEquals(browser.version, ua.opera.v_10.version);
+    test.assert(browser.mac, "Platform should be Mac");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
 
   }).run(function(){
     test.done();
