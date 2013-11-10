@@ -4,6 +4,8 @@ ua = {
 	chrome : {
 		windows: "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
 		mac: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
+        android: "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Mobile Safari/537.36",
+        linux: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
 		version : "32.0.1664.3"
 	},
 	safari : {
@@ -15,6 +17,7 @@ ua = {
 	firefox : {
 		windows: "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0",
 		mac: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:25.0) Gecko/20100101 Firefox/25.0",
+        linux: "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0",
 		version: "25.0"
 	},
 	ie : {
@@ -80,6 +83,46 @@ casper.test.begin("when using Chrome on Mac", 4, function(test) {
   });
 });
 
+casper.test.begin("when using Chrome on an Android device", 4, function(test) {
+  casper.userAgent(ua.chrome.android);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.chrome, "Browser should be Chrome");
+    test.assert(browser.webkit, "Browser should be webkit based");
+    test.assertEquals(browser.version, ua.chrome.version, "Version should be " + ua.chrome.version);
+
+    test.assert(browser.android, "Platform should be android");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Chrome on Linux", 4, function(test) {
+  casper.userAgent(ua.chrome.linux);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.chrome, "Browser should be Chrome");
+    test.assert(browser.webkit, "Browser should be webkit based");
+    test.assertEquals(browser.version, ua.chrome.version, "Version should be " + ua.chrome.version);
+
+    test.assert(browser.linux, "Platform should be linux");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
 casper.test.begin("when using Firefox on Windows", 4, function(test) {
   casper.userAgent(ua.firefox.windows);
 
@@ -117,6 +160,26 @@ casper.test.begin("when using Firefox on Mac", 4, function(test) {
 
   }).run(function(){
   	test.done();
+  });
+});
+
+casper.test.begin("when using Firefox on Linux", 4, function(test) {
+  casper.userAgent(ua.firefox.linux);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.mozilla, "Browser should be Mozilla");
+    test.assertEquals(browser.version, ua.firefox.version, "Version should be " + ua.firefox.version);
+    test.assert(browser.linux, "Platform should be linux");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
+
+  }).run(function(){
+    test.done();
   });
 });
 
