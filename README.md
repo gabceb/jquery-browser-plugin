@@ -26,11 +26,12 @@ Reading the browser verion
 
 ## Things not included in the original jQuery $.browser implementation
 
-- Detect Windows, Mac, Linux, iPad, iPhone and Android useragents
+- Detect Windows, Mac, Linux, iPad, iPhone, Android and Windows Phone useragents
 
 ```javascript
 	$.browser.ipad
 	$.browser.iphone
+	$.browser["windows phone"]
 	$.browser.android
 	$.browser.win
 	$.browser.mac
@@ -39,6 +40,7 @@ Reading the browser verion
 
 - Support for new useragent on IE11
 - Support for webkit based Opera browsers
+- Added testing using PhantomJS and different browser user agents
 
 ## Testing
 
