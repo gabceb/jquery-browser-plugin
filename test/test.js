@@ -21,7 +21,12 @@ ua = {
 		v_9: "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)",
 		v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
 		v_11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
-	}
+	},
+  opera : {
+    mac : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36 OPR/15.0.1147.18",
+    windows: "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36 OPR/15.0.1147.18",
+    version: "15.0.1147.18"
+  }
 }
 
 test_url = "https://www.blendspace.com"
@@ -225,5 +230,45 @@ casper.test.begin("when using IE11", 4, function(test) {
 
   }).run(function(){
   	test.done();
+  });
+});
+
+casper.test.begin("when using Opera 15+ on Windows", 4, function(test) {
+  casper.userAgent(ua.opera.windows);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.opera, "Browser should be Opera");
+    test.assertEquals(browser.version, ua.opera.version);
+    test.assert(browser.win, "Platform should be Windows");
+
+    test.assert(browser.webkit, "Browser should be webkit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Opera 15+ on Mac", 4, function(test) {
+  casper.userAgent(ua.opera.mac);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.opera, "Browser should be Opera");
+    test.assertEquals(browser.version, ua.opera.version);
+    test.assert(browser.mac, "Platform should be Mac");
+
+    test.assert(browser.webkit, "Browser should be webkit based");
+
+  }).run(function(){
+    test.done();
   });
 });
