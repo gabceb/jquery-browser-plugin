@@ -188,7 +188,7 @@ casper.test.begin("when using Firefox on Linux", 4, function(test) {
   });
 });
 
-casper.test.begin("when using Safari on Mac", 3, function(test) {
+casper.test.begin("when using Safari on Mac", 4, function(test) {
   casper.userAgent(ua.safari.mac);
 
   casper.start(test_url).then(function(){
@@ -199,7 +199,7 @@ casper.test.begin("when using Safari on Mac", 3, function(test) {
   	
   	test.assert(browser.safari, "Browser should be Safari");
   	test.assert(browser.webkit, "Browser should be webkit based");
-  	//test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
+  	test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
 
   	test.assert(browser.mac, "Platform should be mac");
 
@@ -208,7 +208,7 @@ casper.test.begin("when using Safari on Mac", 3, function(test) {
   });
 });
 
-casper.test.begin("when using Safari on iPad", 3, function(test) {
+casper.test.begin("when using Safari on iPad", 4, function(test) {
   casper.userAgent(ua.safari.ipad);
 
   casper.start(test_url).then(function(){
@@ -219,7 +219,7 @@ casper.test.begin("when using Safari on iPad", 3, function(test) {
   	
   	test.assert(browser.safari, "Browser should be Safari");
   	test.assert(browser.webkit, "Browser should be webkit based");
-  	//test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
+  	test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
 
   	test.assert(browser.ipad, "Platform should be iPad");
 
@@ -228,7 +228,7 @@ casper.test.begin("when using Safari on iPad", 3, function(test) {
   });
 });
 
-casper.test.begin("when using Safari on iPhone", 3, function(test) {
+casper.test.begin("when using Safari on iPhone", 4, function(test) {
   casper.userAgent(ua.safari.iphone);
 
   casper.start(test_url).then(function(){
@@ -239,7 +239,7 @@ casper.test.begin("when using Safari on iPhone", 3, function(test) {
   	
   	test.assert(browser.safari, "Browser should be Safari");
   	test.assert(browser.webkit, "Browser should be webkit based");
-  	//test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
+  	test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
 
   	test.assert(browser.iphone, "Platform should be iPhone");
 
