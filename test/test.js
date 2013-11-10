@@ -21,9 +21,14 @@ ua = {
 		version: "25.0"
 	},
 	ie : {
-		v_9: "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)",
-		v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
-		v_11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
+        windows : {
+            v_9: "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)",
+            v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
+            v_11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
+        },
+        win_phone : {
+            v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 1020)"
+        }
 	},
   opera : {
     v_15: {
@@ -244,7 +249,7 @@ casper.test.begin("when using Safari on iPhone", 3, function(test) {
 });
 
 casper.test.begin("when using IE9", 4, function(test) {
-  casper.userAgent(ua.ie.v_9);
+  casper.userAgent(ua.ie.windows.v_9);
 
   casper.start(test_url).then(function(){
   	
@@ -264,7 +269,7 @@ casper.test.begin("when using IE9", 4, function(test) {
 });
 
 casper.test.begin("when using IE10", 4, function(test) {
-  casper.userAgent(ua.ie.v_10);
+  casper.userAgent(ua.ie.windows.v_10);
 
   casper.start(test_url).then(function(){
   	
@@ -284,7 +289,7 @@ casper.test.begin("when using IE10", 4, function(test) {
 });
 
 casper.test.begin("when using IE11", 4, function(test) {
-  casper.userAgent(ua.ie.v_11);
+  casper.userAgent(ua.ie.windows.v_11);
 
   casper.start(test_url).then(function(){
   	
@@ -300,6 +305,26 @@ casper.test.begin("when using IE11", 4, function(test) {
 
   }).run(function(){
   	test.done();
+  });
+});
+
+casper.test.begin("when using IE10 on a Windows Phone", 4, function(test) {
+  casper.userAgent(ua.ie.win_phone.v_10);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+        return $.browser;
+    });
+    
+    test.assert(browser.msie, "Browser should be IE");
+    test.assertEquals(browser.version, "10.0", "Version should be 10.0");
+    test.assert(browser["windows phone"], "Platform should be Windows Phone");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
+
+  }).run(function(){
+    test.done();
   });
 });
 
