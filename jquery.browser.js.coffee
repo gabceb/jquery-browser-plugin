@@ -1,5 +1,5 @@
 #!
-# jQuery Browser Plugin v0.0.4
+# jQuery Browser Plugin v0.0.5
 # https://github.com/gabceb/jquery-browser-plugin
 #
 # Original jquery-browser code Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors
