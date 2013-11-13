@@ -38,6 +38,15 @@ Reading the browser verion
 	$.browser.linux
 ```
 
+- Detect the browser's major version
+
+```javascript
+	// User Agent for Chrome
+	// Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36
+	
+	$.browser.versionNumber // Returns 32 as a number
+```
+
 - Support for new useragent on IE11
 - Support for webkit based Opera browsers
 - Added testing using PhantomJS and different browser user agents
