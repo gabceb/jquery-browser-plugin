@@ -52,12 +52,15 @@ browser = {};
 
 if ( matched.browser ) {
 	browser[ matched.browser ] = true;
+	browser.name = matched.browser;
+
 	browser.version = matched.version;
     browser.versionNumber = parseFloat(matched.version, 10);
 }
 
 if ( matched.platform ) {
 	browser[ matched.platform ] = true;
+	browser.platform = matched.platform;
 }
 
 // Chrome, Opera 15+ and Safari are webkit based browsers
