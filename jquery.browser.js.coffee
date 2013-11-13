@@ -31,14 +31,11 @@
 
   if matched.browser
     browser[matched.browser] = true
-    browser.name = matched.browser
-
     browser.version = matched.version
     browser.versionNumber = parseFloat(matched.version, 10)
 
   if matched.platform
     browser[matched.platform] = true
-    browser.platform = matched.platform
 
   # Chrome, Opera 15+ and Safari are webkit based browsers
   if browser.chrome or browser.opr or browser.safari
@@ -51,6 +48,10 @@
   # Opera 15+ are identified as opr
   if browser.opr
     browser.opera = true
+
+  # Assign the name and platform variable
+  browser.name = matched.browser
+  browser.platform = matched.platform
 
 jQuery.browser = browser
 ) jQuery, window
