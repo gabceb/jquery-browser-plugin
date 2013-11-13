@@ -1,7 +1,7 @@
 #!
 # jQuery Browser Plugin v0.0.4
 # https://github.com/gabceb/jquery-browser-plugin
-# 
+#
 # Original jquery-browser code Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors
 # http://jquery.org/license
 #
@@ -11,7 +11,7 @@
 # Released under the MIT license
 #
 # Date: 2013-07-29T17:23:27-07:00
-# 
+#
 
 ((jQuery, window, undefined_) ->
   "use strict"
@@ -28,13 +28,14 @@
 
   matched = jQuery.uaMatch(window.navigator.userAgent)
   browser = {}
-  
+
   if matched.browser
     browser[matched.browser] = true
     browser.version = matched.version
+    browser.versionNumber = parseFloat(matched.version, 10)
 
   browser[matched.platform] = true  if matched.platform
-  
+
   # Chrome, Opera 15+ and Safari are webkit based browsers
   if browser.chrome or browser.opr or browser.safari
     browser.webkit = true
