@@ -68,13 +68,19 @@ if ( browser.chrome || browser.opr || browser.safari ) {
 // IE11 has a new token so we will assign it msie to avoid breaking changes
 if ( browser.rv )
 {
-	browser.msie = true;
+	var ie = 'msie';
+
+	matched.browser = ie;
+	browser[ie] = true;
 }
 
 // Opera 15+ are identified as opr
 if ( browser.opr )
 {
-	browser.opera = true;
+	var opera = 'opera';
+
+	matched.browser = opera;
+	browser[opera] = true;
 }
 
 // Assign the name and platform variable

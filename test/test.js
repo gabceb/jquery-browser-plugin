@@ -24,7 +24,7 @@ ua = {
         linux: "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0",
 		version: "25.0",
         versionNumber: 25,
-        name : "firefox"
+        name : "mozilla"
 	},
 	ie : {
         windows : {
@@ -460,7 +460,7 @@ casper.test.begin("when using Opera 10 on Mac", 6, function(test) {
     
     test.assert(browser.opera, "Browser should be Opera");
     test.assertEquals(browser.name, ua.opera.name,"Browser name should be " + ua.opera.name);
-    
+
     test.assertEquals(browser.version, ua.opera.v_10.version, "Version should be " + ua.opera.v_10.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_10.versionNumber, "Version number should be " + ua.opera.v_10.versionNumber);
     test.assert(browser.mac, "Platform should be Mac");

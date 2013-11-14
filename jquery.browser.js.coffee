@@ -43,12 +43,18 @@
 
   # IE11 has a new token so we will assign it msie to avoid breaking changes
   if browser.rv
-    browser.msie = true
+    ie = "msie"
+    
+    matched.browser = ie
+    browser[ie] = true
 
   # Opera 15+ are identified as opr
   if browser.opr
-    browser.opera = true
-
+    opera = "opera"
+    
+    matched.browser = opera
+    browser[opera] = true
+  
   # Assign the name and platform variable
   browser.name = matched.browser
   browser.platform = matched.platform
