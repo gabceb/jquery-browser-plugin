@@ -1,4 +1,11 @@
-util = require('utils');
+test_url = "http://localhost:8008"
+
+var casper = require('casper').create({
+    verbose: true
+});
+
+require('casperserver.js').create(casper);
+casper.server.start();
 
 ua = {
 	chrome : {
@@ -53,10 +60,6 @@ ua = {
     name : "opera"
   }
 }
-
-test_url = "https://www.blendspace.com"
-
-util.dump("Casper tests running using " + test_url);
 
 casper.test.begin("when using Chrome on Windows", 6, function(test) {
   casper.userAgent(ua.chrome.windows);
