@@ -27,12 +27,21 @@ module.exports = function(grunt) {
 				src: "dist/<%= pkg.name %>.js",
 				dest: "test/src/<%= pkg.name %>.js"
 			}
+		},
+		exec: {
+			test: {
+				command: "casperjs test test/test.js",
+				stdout: true,
+				stderr: true
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-exec');
 
 	grunt.registerTask('default', ['jshint', 'uglify', 'copy']);
+	grunt.registerTask('test', ['exec']);
 };
