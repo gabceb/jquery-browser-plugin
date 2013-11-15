@@ -4,14 +4,12 @@
 	"authors": ["Gabriel Cebrian <gabceb@gmail.com>", "jQuery Team <https://github.com/gabceb/jquery-browser-plugin/wiki/Authors>"],
 	"description": "A jQuery plugin for browser detection.", 
 	"repository": "git@github.com:gabceb/jquery-browser-plugin.git", 
-	"devDependencies":
-	{
-		'grunt': '~0.4.0',
-		'grunt-contrib-jshint': '~0.1.1'
+	"devDependencies": {
+		"grunt": "~0.4.0",
+		"grunt-contrib-jshint": "~0.1.1"
 	},
-	"license": "MIT", 
-	"engines":
-	{
+	"license": "MIT",
+	"engines": {
 		"node":">= 0.4.0"
-	} 
+	}
 }
