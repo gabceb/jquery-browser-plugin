@@ -59,9 +59,12 @@ For instructions on how to install [Casperjs v1.1](http://casperjs.org/) go to h
 
 **Note: Testing requires Casperjs v1.1**
 
-Once Casperjs is properly installed you can execute the tests using:
+Install the grunt-cli dependency by running `npm install -g grunt-cli`
+Run `npm install` to install all dependencies including grunt and all tasks
 
-	casperjs test test/test.js
+Once Casperjs and the grunt-cli npm package is installed you can execute all the tests by using:
+
+	grunt test
 
 ## Development
 
