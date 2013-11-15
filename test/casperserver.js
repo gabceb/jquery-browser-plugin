@@ -62,6 +62,15 @@ Server.prototype.start = function start() {
 };
 
 /**
+ * Stop the server
+ */
+Server.prototype.end = function start() {
+    "use strict";
+    this.webserver.close();
+    this.log("server closed");
+};
+
+/**
  * Internal method, callback of the webserver.listen
  *
  * See: https://github.com/ariya/phantomjs/wiki/API-Reference#wiki-webserver-module

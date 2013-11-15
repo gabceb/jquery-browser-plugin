@@ -7,6 +7,10 @@ var casper = require('casper').create({
 require('casperserver.js').create(casper);
 casper.server.start();
 
+casper.on('exit', function(status){
+    casper.server.end();
+});
+
 ua = {
 	chrome : {
 		windows: "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
@@ -472,5 +476,6 @@ casper.test.begin("when using Opera 10 on Mac", 6, function(test) {
 
   }).run(function(){
     test.done();
+    casper.exit();
   });
 });
