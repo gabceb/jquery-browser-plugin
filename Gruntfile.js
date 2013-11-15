@@ -21,11 +21,18 @@ module.exports = function(grunt) {
 					'dist/<%= pkg.name %>.min.js': 'dist/<%= pkg.name %>.js'
 				}
 			}
+		},
+		copy: {
+			main:{
+				src: "dist/<%= pkg.name %>.js",
+				dest: "test/src/<%= pkg.name %>.js"
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['jshint', 'uglify']);
+	grunt.registerTask('default', ['jshint', 'uglify', 'copy']);
 };
