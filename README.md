@@ -75,3 +75,6 @@ Once Casperjs and the grunt-cli npm package is installed you can execute all the
 
 - [Examples and original implementation](http://api.jquery.com/jQuery.browser/)
 - [Original Gist used for the plugin](https://gist.github.com/adeelejaz/4714079)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gabceb/jquery-browser-plugin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
