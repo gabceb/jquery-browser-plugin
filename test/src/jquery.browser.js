@@ -53,7 +53,7 @@ browser = {};
 if ( matched.browser ) {
 	browser[ matched.browser ] = true;
 	browser.version = matched.version;
-    browser.versionNumber = parseFloat(matched.version, 10);
+    browser.versionNumber = parseInt(matched.version);
 }
 
 if ( matched.platform ) {

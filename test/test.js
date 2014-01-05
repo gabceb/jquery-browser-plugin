@@ -61,6 +61,12 @@ ua = {
       version: "10.00",
       versionNumber: 10
     },
+    v_12: {
+      mac : "Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/12.11",
+      windows: "Opera/9.80 (Windows NT 6.1; U; en) Presto/2.6.30 Version/12.11",
+      version: "12.11",
+      versionNumber: 12
+    },
     name : "opera"
   }
 }
@@ -470,6 +476,52 @@ casper.test.begin("when using Opera 10 on Mac", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_10.version, "Version should be " + ua.opera.v_10.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_10.versionNumber, "Version number should be " + ua.opera.v_10.versionNumber);
+    test.assert(browser.mac, "Platform should be Mac");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Opera 12.11 on Windows", 6, function(test) {
+  casper.userAgent(ua.opera.v_12.windows);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.opera, "Browser should be Opera");
+    test.assertEquals(browser.name, ua.opera.name,"Browser name should be " + ua.opera.name);
+
+    test.assertEquals(browser.version, ua.opera.v_12.version, "Version should be " + ua.opera.v_12.version);
+    test.assertEquals(browser.versionNumber, ua.opera.v_12.versionNumber, "Version number should be " + ua.opera.v_12.versionNumber);
+    test.assert(browser.win, "Platform should be Windows");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Opera 12.11 on Mac", 6, function(test) {
+  casper.userAgent(ua.opera.v_12.mac);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.opera, "Browser should be Opera");
+    test.assertEquals(browser.name, ua.opera.name,"Browser name should be " + ua.opera.name);
+
+    test.assertEquals(browser.version, ua.opera.v_12.version, "Version should be " + ua.opera.v_12.version);
+    test.assertEquals(browser.versionNumber, ua.opera.v_12.versionNumber, "Version number should be " + ua.opera.v_12.versionNumber);
     test.assert(browser.mac, "Platform should be Mac");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
