@@ -15,27 +15,27 @@ ua = {
 	chrome : {
 		windows: "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
 		mac: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
-        android: "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Mobile Safari/537.36",
-        linux: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
-		version : "32.0.1664.3",
-        versionNumber : 32,
-        name : "chrome"
+    android: "Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Mobile Safari/537.36",
+    linux: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
+    version : "32.0.1664.3",
+    versionNumber : 32,
+    name : "chrome"
 	},
 	safari : {
 		mac: "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71",
 		ipad: "Mozilla/5.0(iPad; U; CPU iPhone OS 7_0_3 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B508 Safari/9537.53",
 		iphone: "Mozilla/5.0(iPhone; CPU iPhone OS 7_0_3 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B508 Safari/9537.53",
 		version: "7.0",
-        versionNumber: 7,
-        name : "safari"
+    versionNumber: 7,
+    name : "safari"
 	},
 	firefox : {
 		windows: "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0",
 		mac: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:25.0) Gecko/20100101 Firefox/25.0",
-        linux: "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0",
+    linux: "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0",
 		version: "25.0",
-        versionNumber: 25,
-        name : "mozilla"
+    versionNumber: 25,
+    name : "mozilla"
 	},
 	ie : {
         windows : {
@@ -68,6 +68,14 @@ ua = {
       versionNumber: 12
     },
     name : "opera"
+  },
+  android : {
+    v_4_4: {
+      android : "Mozilla/5.0 (Linux; Android 4.4.1; Nexus 5 Build/KOT49E) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+      version: "4.0",
+      versionNumber: 4
+    },
+    name: "android"
   }
 }
 
@@ -525,6 +533,28 @@ casper.test.begin("when using Opera 12.11 on Mac", 6, function(test) {
     test.assert(browser.mac, "Platform should be Mac");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Android 4.4 stock browser on Android", 5, function(test) {
+  casper.userAgent(ua.android.v_4_4.android);
+
+  casper.start(test_url).then(function(){
+    
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.android, "Browser should be Android");
+    test.assertEquals(browser.name, ua.android.name,"Browser name should be " + ua.android.name);
+
+    test.assertEquals(browser.version, ua.android.v_4_4.version, "Version should be " + ua.android.v_4_4.version);
+    test.assertEquals(browser.versionNumber, ua.android.v_4_4.versionNumber, "Version number should be " + ua.android.v_4_4.versionNumber);
+
+    test.assert(browser.webkit, "Browser should be webkit based");
 
   }).run(function(){
     test.done();

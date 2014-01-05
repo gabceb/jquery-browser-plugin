@@ -54,6 +54,13 @@
     
     matched.browser = opera
     browser[opera] = true
+
+  # Stock Android browsers are marked as safari on Android.
+  if browser.safari && browser.android
+    var android = 'android'
+
+    matched.browser = android
+    browser[android] = true
   
   # Assign the name and platform variable
   browser.name = matched.browser
