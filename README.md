@@ -1,4 +1,4 @@
-[![NPM](https://nodei.co/npm/jquery-browser.png)](https://nodei.co/npm/jquery-browser/)
+[![NPM](https://nodei.co/npm/jquery.browser.png)](https://nodei.co/npm/jquery.browser/)
 
 A jQuery plugin for browser detection. jQuery removed support for browser detection on 1.9.1 so it was abstracted into a jQuery plugin
 
