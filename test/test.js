@@ -1,4 +1,4 @@
-test_url = "http://localhost:8008"
+test_url = "http://localhost:8008";
 
 var casper = require('casper').create({
     verbose: true
@@ -77,7 +77,7 @@ ua = {
     },
     name: "android"
   }
-}
+};
 
 casper.test.begin("when using Chrome on Windows", 6, function(test) {
   casper.userAgent(ua.chrome.windows);
@@ -95,6 +95,7 @@ casper.test.begin("when using Chrome on Windows", 6, function(test) {
   	test.assertEquals(browser.version, ua.chrome.version, "String version should be " + ua.chrome.version);
     test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Number version should be " + ua.chrome.versionNumber);
 
+  	test.assert(browser.desktop, "Browser platform should be desktop");
   	test.assert(browser.win, "Platform should be Windows");
 
   }).run(function(){
@@ -118,7 +119,8 @@ casper.test.begin("when using Chrome on Mac", 6, function(test) {
   	test.assertEquals(browser.version, ua.chrome.version, "Version should be " + ua.chrome.version);
     test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Number version should be " + ua.chrome.versionNumber);
 
-  	test.assert(browser.mac, "Platform should be mac");
+  	test.assert(browser.desktop, "Browser platform should be desktop");
+  	test.assert(browser.mac, "Platform should be Mac");
 
   }).run(function(){
   	test.done();
@@ -141,7 +143,8 @@ casper.test.begin("when using Chrome on an Android device", 6, function(test) {
     test.assertEquals(browser.version, ua.chrome.version, "Version should be " + ua.chrome.version);
     test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Version should be " + ua.chrome.versionNumber);
 
-    test.assert(browser.android, "Platform should be android");
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.android, "Platform should be Android");
 
   }).run(function(){
     test.done();
@@ -164,7 +167,8 @@ casper.test.begin("when using Chrome on Linux", 6, function(test) {
     test.assertEquals(browser.version, ua.chrome.version, "Version should be " + ua.chrome.version);
     test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Version should be " + ua.chrome.versionNumber);
 
-    test.assert(browser.linux, "Platform should be linux");
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.linux, "Platform should be Linux");
 
   }).run(function(){
     test.done();
@@ -185,6 +189,8 @@ casper.test.begin("when using Firefox on Windows", 6, function(test) {
 
   	test.assertEquals(browser.version, ua.firefox.version, "Version should be " + ua.firefox.version);
     test.assertEquals(browser.versionNumber, ua.firefox.versionNumber, "Version should be " + ua.firefox.versionNumber);
+
+  	test.assert(browser.desktop, "Browser platform should be desktop");
   	test.assert(browser.win, "Platform should be Windows");
 
   	test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -208,7 +214,9 @@ casper.test.begin("when using Firefox on Mac", 6, function(test) {
 
   	test.assertEquals(browser.version, ua.firefox.version, "Version should be " + ua.firefox.version);
     test.assertEquals(browser.versionNumber, ua.firefox.versionNumber, "Version should be " + ua.firefox.versionNumber);
-  	test.assert(browser.mac, "Platform should be mac");
+
+  	test.assert(browser.desktop, "Browser platform should be desktop");
+  	test.assert(browser.mac, "Platform should be Mac");
 
   	test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
 
@@ -231,7 +239,9 @@ casper.test.begin("when using Firefox on Linux", 6, function(test) {
 
     test.assertEquals(browser.version, ua.firefox.version, "Version should be " + ua.firefox.version);
     test.assertEquals(browser.versionNumber, ua.firefox.versionNumber, "Version should be " + ua.firefox.versionNumber);
-    test.assert(browser.linux, "Platform should be linux");
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.linux, "Platform should be Linux");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
 
@@ -256,7 +266,8 @@ casper.test.begin("when using Safari on Mac", 6, function(test) {
   	test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
     test.assertEquals(browser.versionNumber, ua.safari.versionNumber, "Version should be " + ua.safari.versionNumber);
 
-  	test.assert(browser.mac, "Platform should be mac");
+  	test.assert(browser.desktop, "Browser platform should be desktop");
+  	test.assert(browser.mac, "Platform should be Mac");
 
   }).run(function(){
   	test.done();
@@ -279,6 +290,7 @@ casper.test.begin("when using Safari on iPad", 6, function(test) {
   	test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
     test.assertEquals(browser.versionNumber, ua.safari.versionNumber, "Version number should be " + ua.safari.versionNumber);
 
+  	test.assert(browser.mobile, "Browser platform should be mobile");
   	test.assert(browser.ipad, "Platform should be iPad");
 
   }).run(function(){
@@ -302,6 +314,7 @@ casper.test.begin("when using Safari on iPhone", 6, function(test) {
   	test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
     test.assertEquals(browser.versionNumber, ua.safari.versionNumber, "Version number should be " + ua.safari.versionNumber);
 
+  	test.assert(browser.mobile, "Browser platform should be mobile");
   	test.assert(browser.iphone, "Platform should be iPhone");
 
   }).run(function(){
@@ -323,6 +336,8 @@ casper.test.begin("when using IE9", 6, function(test) {
 
   	test.assertEquals(browser.version, "9.0", "Version should be 9.0");
     test.assertEquals(browser.versionNumber, 9, "Version should be 9");
+
+  	test.assert(browser.desktop, "Browser platform should be desktop");
   	test.assert(browser.win, "Platform should be Windows");
 
   	test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -346,6 +361,8 @@ casper.test.begin("when using IE10", 6, function(test) {
 
   	test.assertEquals(browser.version, "10.0", "Version should be 10");
     test.assertEquals(browser.versionNumber, 10, "Version should be 10");
+
+  	test.assert(browser.desktop, "Browser platform should be desktop");
   	test.assert(browser.win, "Platform should be Windows");
 
   	test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -369,6 +386,8 @@ casper.test.begin("when using IE11", 6, function(test) {
 
   	test.assertEquals(browser.version, "11.0", "Version should be 11.0");
     test.assertEquals(browser.versionNumber, 11, "Version should be 11");
+
+  	test.assert(browser.desktop, "Browser platform should be desktop");
   	test.assert(browser.win, "Platform should be Windows");
 
   	test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -392,6 +411,8 @@ casper.test.begin("when using IE10 on a Windows Phone", 6, function(test) {
 
     test.assertEquals(browser.version, "10.0", "Version should be 10.0");
     test.assertEquals(browser.versionNumber, 10, "Version should be 10");
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
     test.assert(browser["windows phone"], "Platform should be Windows Phone");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -415,6 +436,8 @@ casper.test.begin("when using Opera 15+ on Windows", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_15.version, "Version should be " + ua.opera.v_15.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_15.versionNumber, "Version number should be " + ua.opera.v_15.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.win, "Platform should be Windows");
 
     test.assert(browser.webkit, "Browser should be webkit based");
@@ -438,6 +461,8 @@ casper.test.begin("when using Opera 15+ on Mac", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_15.version, "Version should be " + ua.opera.v_15.version)
     test.assertEquals(browser.versionNumber, ua.opera.v_15.versionNumber, "Version number should be " + ua.opera.v_15.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.mac, "Platform should be Mac");
 
     test.assert(browser.webkit, "Browser should be webkit based");
@@ -461,6 +486,8 @@ casper.test.begin("when using Opera 10 on Windows", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_10.version, "Version should be " + ua.opera.v_10.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_10.versionNumber, "Version number should be " + ua.opera.v_10.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.win, "Platform should be Windows");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -484,6 +511,8 @@ casper.test.begin("when using Opera 10 on Mac", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_10.version, "Version should be " + ua.opera.v_10.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_10.versionNumber, "Version number should be " + ua.opera.v_10.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.mac, "Platform should be Mac");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -507,6 +536,8 @@ casper.test.begin("when using Opera 12.11 on Windows", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_12.version, "Version should be " + ua.opera.v_12.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_12.versionNumber, "Version number should be " + ua.opera.v_12.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.win, "Platform should be Windows");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -530,6 +561,8 @@ casper.test.begin("when using Opera 12.11 on Mac", 6, function(test) {
 
     test.assertEquals(browser.version, ua.opera.v_12.version, "Version should be " + ua.opera.v_12.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_12.versionNumber, "Version number should be " + ua.opera.v_12.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.mac, "Platform should be Mac");
 
     test.assertFalsy(browser.webkit, "Browser should NOT be webkit based");
@@ -554,6 +587,7 @@ casper.test.begin("when using Android 4.4 stock browser on Android", 5, function
     test.assertEquals(browser.version, ua.android.v_4_4.version, "Version should be " + ua.android.v_4_4.version);
     test.assertEquals(browser.versionNumber, ua.android.v_4_4.versionNumber, "Version number should be " + ua.android.v_4_4.versionNumber);
 
+    test.assert(browser.mobile, "Browser platform should be mobile");
     test.assert(browser.webkit, "Browser should be webkit based");
 
   }).run(function(){

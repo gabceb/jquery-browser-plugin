@@ -28,7 +28,7 @@ Reading the browser verion
 
 ## Things not included in the original jQuery $.browser implementation
 
-- Detect Windows, Mac, Linux, iPad, iPhone, Android and Windows Phone useragents
+- Detect Windows, Mac, Linux, iPad, iPhone, Android and Windows Phone useragents, in addition to desktop and mobile browsers
 
 ```javascript
 	$.browser.ipad
@@ -38,6 +38,22 @@ Reading the browser verion
 	$.browser.win
 	$.browser.mac
 	$.browser.linux
+	$.browser.desktop
+	$.browser.mobile
+```
+
+```javascript
+	// User Agent for Firefox on Windows
+	User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0
+	
+	$.browser.desktop // Returns true as a boolean
+```
+
+```javascript
+	// User Agent for Safari on iPhone
+	User-Agent: Mozilla/5.0(iPhone; CPU iPhone OS 7_0_3 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B508 Safari/9537.53
+	
+	$.browser.mobile // Returns true as a boolean
 ```
 
 - Detect the browser's major version
