@@ -37,6 +37,14 @@
   if matched.platform
     browser[matched.platform] = true
 
+  # These are all considered mobile platforms, meaning they run a mobile browser
+  if browser.android or browser.ipad or browser.iphone or browser["windows phone"]
+    browser.mobile = true
+
+  # These are all considered desktop platforms, meaning they run a desktop browser
+  if browser.mac or browser.linux or browser.win
+    browser.desktop = true
+
   # Chrome, Opera 15+ and Safari are webkit based browsers
   if browser.chrome or browser.opr or browser.safari
     browser.webkit = true
