@@ -79,7 +79,7 @@ ua = {
   }
 };
 
-casper.test.begin("when using Chrome on Windows", 6, function(test) {
+casper.test.begin("when using Chrome on Windows", 7, function(test) {
   casper.userAgent(ua.chrome.windows);
 
   casper.start(test_url).then(function(){
@@ -103,7 +103,7 @@ casper.test.begin("when using Chrome on Windows", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Chrome on Mac", 6, function(test) {
+casper.test.begin("when using Chrome on Mac", 7, function(test) {
   casper.userAgent(ua.chrome.mac);
 
   casper.start(test_url).then(function(){
@@ -127,7 +127,7 @@ casper.test.begin("when using Chrome on Mac", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Chrome on an Android device", 6, function(test) {
+casper.test.begin("when using Chrome on an Android device", 7, function(test) {
   casper.userAgent(ua.chrome.android);
 
   casper.start(test_url).then(function(){
@@ -151,7 +151,7 @@ casper.test.begin("when using Chrome on an Android device", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Chrome on Linux", 6, function(test) {
+casper.test.begin("when using Chrome on Linux", 7, function(test) {
   casper.userAgent(ua.chrome.linux);
 
   casper.start(test_url).then(function(){
@@ -175,7 +175,7 @@ casper.test.begin("when using Chrome on Linux", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Firefox on Windows", 6, function(test) {
+casper.test.begin("when using Firefox on Windows", 7, function(test) {
   casper.userAgent(ua.firefox.windows);
 
   casper.start(test_url).then(function(){
@@ -200,7 +200,7 @@ casper.test.begin("when using Firefox on Windows", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Firefox on Mac", 6, function(test) {
+casper.test.begin("when using Firefox on Mac", 7, function(test) {
   casper.userAgent(ua.firefox.mac);
 
   casper.start(test_url).then(function(){
@@ -225,7 +225,7 @@ casper.test.begin("when using Firefox on Mac", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Firefox on Linux", 6, function(test) {
+casper.test.begin("when using Firefox on Linux", 7, function(test) {
   casper.userAgent(ua.firefox.linux);
 
   casper.start(test_url).then(function(){
@@ -250,7 +250,7 @@ casper.test.begin("when using Firefox on Linux", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Safari on Mac", 6, function(test) {
+casper.test.begin("when using Safari on Mac", 7, function(test) {
   casper.userAgent(ua.safari.mac);
 
   casper.start(test_url).then(function(){
@@ -274,7 +274,7 @@ casper.test.begin("when using Safari on Mac", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Safari on iPad", 6, function(test) {
+casper.test.begin("when using Safari on iPad", 7, function(test) {
   casper.userAgent(ua.safari.ipad);
 
   casper.start(test_url).then(function(){
@@ -298,7 +298,7 @@ casper.test.begin("when using Safari on iPad", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Safari on iPhone", 6, function(test) {
+casper.test.begin("when using Safari on iPhone", 7, function(test) {
   casper.userAgent(ua.safari.iphone);
 
   casper.start(test_url).then(function(){
@@ -322,7 +322,7 @@ casper.test.begin("when using Safari on iPhone", 6, function(test) {
   });
 });
 
-casper.test.begin("when using IE9", 6, function(test) {
+casper.test.begin("when using IE9", 7, function(test) {
   casper.userAgent(ua.ie.windows.v_9);
 
   casper.start(test_url).then(function(){
@@ -347,7 +347,7 @@ casper.test.begin("when using IE9", 6, function(test) {
   });
 });
 
-casper.test.begin("when using IE10", 6, function(test) {
+casper.test.begin("when using IE10", 7, function(test) {
   casper.userAgent(ua.ie.windows.v_10);
 
   casper.start(test_url).then(function(){
@@ -372,7 +372,7 @@ casper.test.begin("when using IE10", 6, function(test) {
   });
 });
 
-casper.test.begin("when using IE11", 6, function(test) {
+casper.test.begin("when using IE11", 7, function(test) {
   casper.userAgent(ua.ie.windows.v_11);
 
   casper.start(test_url).then(function(){
@@ -397,7 +397,7 @@ casper.test.begin("when using IE11", 6, function(test) {
   });
 });
 
-casper.test.begin("when using IE10 on a Windows Phone", 6, function(test) {
+casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
   casper.userAgent(ua.ie.win_phone.v_10);
 
   casper.start(test_url).then(function(){
@@ -422,7 +422,7 @@ casper.test.begin("when using IE10 on a Windows Phone", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Opera 15+ on Windows", 6, function(test) {
+casper.test.begin("when using Opera 15+ on Windows", 7, function(test) {
   casper.userAgent(ua.opera.v_15.windows);
 
   casper.start(test_url).then(function(){
@@ -447,7 +447,7 @@ casper.test.begin("when using Opera 15+ on Windows", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Opera 15+ on Mac", 6, function(test) {
+casper.test.begin("when using Opera 15+ on Mac", 7, function(test) {
   casper.userAgent(ua.opera.v_15.mac);
 
   casper.start(test_url).then(function(){
@@ -472,7 +472,7 @@ casper.test.begin("when using Opera 15+ on Mac", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Opera 10 on Windows", 6, function(test) {
+casper.test.begin("when using Opera 10 on Windows", 7, function(test) {
   casper.userAgent(ua.opera.v_10.windows);
 
   casper.start(test_url).then(function(){
@@ -497,7 +497,7 @@ casper.test.begin("when using Opera 10 on Windows", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Opera 10 on Mac", 6, function(test) {
+casper.test.begin("when using Opera 10 on Mac", 7, function(test) {
   casper.userAgent(ua.opera.v_10.mac);
 
   casper.start(test_url).then(function(){
@@ -522,7 +522,7 @@ casper.test.begin("when using Opera 10 on Mac", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Opera 12.11 on Windows", 6, function(test) {
+casper.test.begin("when using Opera 12.11 on Windows", 7, function(test) {
   casper.userAgent(ua.opera.v_12.windows);
 
   casper.start(test_url).then(function(){
@@ -547,7 +547,7 @@ casper.test.begin("when using Opera 12.11 on Windows", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Opera 12.11 on Mac", 6, function(test) {
+casper.test.begin("when using Opera 12.11 on Mac", 7, function(test) {
   casper.userAgent(ua.opera.v_12.mac);
 
   casper.start(test_url).then(function(){
@@ -572,7 +572,7 @@ casper.test.begin("when using Opera 12.11 on Mac", 6, function(test) {
   });
 });
 
-casper.test.begin("when using Android 4.4 stock browser on Android", 5, function(test) {
+casper.test.begin("when using Android 4.4 stock browser on Android", 6, function(test) {
   casper.userAgent(ua.android.v_4_4.android);
 
   casper.start(test_url).then(function(){

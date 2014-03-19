@@ -53,11 +53,21 @@ browser = {};
 if ( matched.browser ) {
 	browser[ matched.browser ] = true;
 	browser.version = matched.version;
-    browser.versionNumber = parseInt(matched.version);
+	browser.versionNumber = parseInt(matched.version);
 }
 
 if ( matched.platform ) {
 	browser[ matched.platform ] = true;
+}
+
+// These are all considered mobile platforms, meaning they run a mobile browser
+if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+	browser.mobile = true;
+}
+
+// These are all considered desktop platforms, meaning they run a desktop browser
+if ( browser.mac || browser.linux || browser.win ) {
+	browser.desktop = true;
 }
 
 // Chrome, Opera 15+ and Safari are webkit based browsers
