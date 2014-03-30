@@ -38,7 +38,7 @@
     browser[matched.platform] = true
 
   # These are all considered mobile platforms, meaning they run a mobile browser
-  if browser.android or browser.ipad or browser.iphone or browser["windows phone"]
+  if browser.android or brower.cros or browser.ipad or browser.iphone or browser["windows phone"]
     browser.mobile = true
 
   # These are all considered desktop platforms, meaning they run a desktop browser

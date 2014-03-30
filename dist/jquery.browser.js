@@ -62,7 +62,7 @@ if ( matched.platform ) {
 }
 
 // These are all considered mobile platforms, meaning they run a mobile browser
-if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+if ( browser.android || browser.cros || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
 	browser.mobile = true;
 }
 

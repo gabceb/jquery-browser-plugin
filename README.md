@@ -14,11 +14,11 @@ Returns true if the current useragent is some version of Microsoft's Internet Ex
 
     $.browser.msie;
 
-Returns true if the current useragent is some version of a Webkit browser (Safari, Chrome and Opera 15+).
+Returns true if the current useragent is some version of a WebKit browser (Safari, Chrome and Opera 15+)
 
     $.browser.webkit;
 
-Returns true if the current useragent is some version of Firefox.
+Returns true if the current useragent is some version of Firefox
 
     $.browser.mozilla;
 
@@ -28,13 +28,14 @@ Reading the browser verion
 
 ## Things not included in the original jQuery $.browser implementation
 
-- Detect Windows, Mac, Linux, iPad, iPhone, Android and Windows Phone useragents, in addition to desktop and mobile browsers
+- Detect Windows, Mac, Linux, iPad, iPhone, Android, Chrome OS, and Windows Phone useragents, in addition to desktop and mobile browsers
 
 ```javascript
 	$.browser.ipad
 	$.browser.iphone
 	$.browser["windows phone"]
 	$.browser.android
+	$.browser.cros
 	$.browser.win
 	$.browser.mac
 	$.browser.linux
@@ -66,7 +67,7 @@ Reading the browser verion
 ```
 
 - Support for new useragent on IE11
-- Support for webkit based Opera browsers
+- Support for WebKit based Opera browsers
 - Added testing using PhantomJS and different browser user agents
 
 ## Testing
