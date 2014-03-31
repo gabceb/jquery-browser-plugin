@@ -62,12 +62,12 @@ if ( matched.platform ) {
 }
 
 // These are all considered mobile platforms, meaning they run a mobile browser
-if ( browser.android || browser.cros || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
 	browser.mobile = true;
 }
 
 // These are all considered desktop platforms, meaning they run a desktop browser
-if ( browser.mac || browser.linux || browser.win ) {
+if ( browser.cros || browser.mac || browser.linux || browser.win ) {
 	browser.desktop = true;
 }
 
@@ -79,7 +79,7 @@ if ( browser.chrome || browser.opr || browser.safari ) {
 // IE11 has a new token so we will assign it msie to avoid breaking changes
 if ( browser.rv )
 {
-	var ie = 'msie';
+	var ie = "msie";
 
 	matched.browser = ie;
 	browser[ie] = true;
@@ -88,16 +88,16 @@ if ( browser.rv )
 // Opera 15+ are identified as opr
 if ( browser.opr )
 {
-	var opera = 'opera';
+	var opera = "opera";
 
 	matched.browser = opera;
 	browser[opera] = true;
 }
 
-// Stock Android browsers are marked as safari on Android.
+// Stock Android browsers are marked as Safari on Android.
 if ( browser.safari && browser.android )
 {
-	var android = 'android';
+	var android = "android";
 
 	matched.browser = android;
 	browser[android] = true;
