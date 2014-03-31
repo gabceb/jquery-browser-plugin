@@ -20,6 +20,8 @@ ua = {
     cros: "Mozilla/5.0 (X11; CrOS i686 14.811.2011) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/14.0.834.0 Safari/535.1",
     version : "32.0.1664.3",
     versionNumber : 32,
+    chromeOsVersion: "14.0.834.0",
+    chromeOsVersionNumber: 14,
     name : "chrome"
 	},
 	safari : {
@@ -189,10 +191,10 @@ casper.test.begin("when using Chrome on Chrome OS", 7, function(test) {
     test.assertEquals(browser.name, ua.chrome.name,"Browser name should be " + ua.chrome.name);
 
     test.assert(browser.webkit, "Browser should be WebKit based");
-    test.assertEquals(browser.version, ua.chrome.version, "Version should be " + ua.chrome.version);
-    test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Version should be " + ua.chrome.versionNumber);
+    test.assertEquals(browser.version, ua.chrome.chromeOsVersion, "Version should be " + ua.chrome.chromeOsVersion);
+    test.assertEquals(browser.versionNumber, ua.chrome.chromeOsVersionNumber, "Version should be " + ua.chrome.chromeOsVersionNumber);
 
-    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.desktop, "Browser platform should be desktop");
     test.assert(browser.cros, "Platform should be Chrome OS");
 
   }).run(function(){
