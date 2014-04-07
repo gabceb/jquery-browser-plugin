@@ -42,7 +42,7 @@
     browser.mobile = true
 
   # These are all considered desktop platforms, meaning they run a desktop browser
-  if brower.cros or browser.mac or browser.linux or browser.win
+  if browser.cros or browser.mac or browser.linux or browser.win
     browser.desktop = true
 
   # Chrome, Opera 15+ and Safari are webkit based browsers
@@ -65,7 +65,7 @@
 
   # Stock Android browsers are marked as safari on Android.
   if browser.safari && browser.android
-    var android = 'android'
+    android = 'android'
 
     matched.browser = android
     browser[android] = true
