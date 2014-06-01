@@ -6,6 +6,7 @@
     "jQuery Team <https://github.com/gabceb/jquery-browser-plugin/wiki/Authors>"
   ],
   "description": "A jQuery plugin for browser detection.",
+  "main": "dist/jquery.browser.js",
   "repository": "git@github.com:gabceb/jquery-browser-plugin.git",
   "devDependencies": {
     "webserver": "*",
