@@ -21,9 +21,11 @@
   jQuery.uaMatch = (ua) ->
     ua = ua.toLowerCase()
     match = /(opr)[\/]([\w.]+)/.exec(ua) or /(chrome)[ \/]([\w.]+)/.exec(ua) or /(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(ua) or /(webkit)[ \/]([\w.]+)/.exec(ua) or /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) or /(msie) ([\w.]+)/.exec(ua) or ua.indexOf("trident") >= 0 and /(rv)(?::| )([\w.]+)/.exec(ua) or ua.indexOf("compatible") < 0 and /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) or []
-    platform_match = /(ipad)/.exec(ua) or /(iphone)/.exec(ua) or /(android)/.exec(ua) or /(windows phone)/.exec(ua) or /(win)/.exec(ua) or /(mac)/.exec(ua) or /(linux)/.exec(ua) or /(cros)/i.exec(ua) or []
+    platform_match = /(ipad)/.exec(ua) or /(iphone)/.exec(ua) or /(android)/.exec(ua) or /(windows phone)/.exec(ua) or /(win)/.exec(ua) or /(mac)/.exec(ua) or /(linux)/.exec(ua) or /(cros)/.exec(ua) or []
+
     browser: match[3] or match[1] or ""
-    version: match[2] or "0"
+    version: match[4] or match[2]
+    versionNumber: match[2] or "0"
     platform: platform_match[0] or ""
 
   matched = jQuery.uaMatch(window.navigator.userAgent)
@@ -32,7 +34,7 @@
   if matched.browser
     browser[matched.browser] = true
     browser.version = matched.version
-    browser.versionNumber = parseInt(matched.version)
+    browser.versionNumber = parseInt(matched.versionNumber)
 
   if matched.platform
     browser[matched.platform] = true
