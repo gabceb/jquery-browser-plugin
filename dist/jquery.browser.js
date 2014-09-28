@@ -38,12 +38,13 @@
   		/(win)/.exec( ua ) ||
   		/(mac)/.exec( ua ) ||
   		/(linux)/.exec( ua ) ||
-  		/(cros)/i.exec( ua ) ||
+  		/(cros)/.exec( ua ) ||
   		[];
 
   	return {
   		browser: match[ 3 ] || match[ 1 ] || "",
-  		version: match[ 2 ] || "0",
+  		version: match[ 4 ] || match[ 2 ],
+  		versionNumber: match[ 2 ] || "0",
   		platform: platform_match[ 0 ] || ""
   	};
   };
@@ -54,7 +55,7 @@
   if ( matched.browser ) {
   	browser[ matched.browser ] = true;
   	browser.version = matched.version;
-  	browser.versionNumber = parseInt(matched.version);
+  	browser.versionNumber = parseInt(matched.versionNumber);
   }
 
   if ( matched.platform ) {
