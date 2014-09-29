@@ -43,5 +43,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-exec');
 
 	grunt.registerTask('default', ['jshint', 'uglify', 'copy']);
-	grunt.registerTask('test', ['exec']);
+	grunt.registerTask('test', ['default', 'exec']);
 };

@@ -22,9 +22,9 @@ ua = {
   },
   safari : {
     mac: "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71",
-    ipad: "Mozilla/5.0(iPad; U; CPU iPhone OS 7_0_3 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B508 Safari/9537.53",
-    iphone: "Mozilla/5.0(iPhone; CPU iPhone OS 7_0_3 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B508 Safari/9537.53",
-    version: "7.0",
+    ipad: "Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
+    iphone: "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
+    version: "537.71",
     versionNumber: 7,
     name : "safari"
   },
@@ -71,7 +71,7 @@ ua = {
   android : {
     v_4_4: {
       android : "Mozilla/5.0 (Linux; Android 4.4.1; Nexus 5 Build/KOT49E) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
-      version: "4.0",
+      version: "537.36",
       versionNumber: 4
     },
     name: "android"
