@@ -1,9 +1,5 @@
 test_url = "http://localhost:8008";
 
-var casper = require('casper').create({
-  verbose: true
-});
-
 require('casperserver.js').create(casper);
 casper.server.start();
 
