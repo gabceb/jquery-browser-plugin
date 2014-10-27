@@ -32,20 +32,20 @@
   		[];
 
   	var platform_match = /(ipad)/.exec( ua ) ||
-      /(ipod)/.exec( ua ) ||
-      /(iphone)/.exec( ua ) ||
-      /(android)/.exec( ua ) ||
-      /(windows phone)/.exec( ua ) ||
-      /(kindle)/.exec( ua ) ||
-      /(silk)/.exec( ua ) ||
-      /(blackberry)/.exec( ua ) ||
-      /(bb)/.exec( ua ) ||
-      /(playbook)/.exec( ua ) ||
-      /(win)/.exec( ua ) ||
-      /(mac)/.exec( ua ) ||
-      /(linux)/.exec( ua ) ||
-      /(cros)/i.exec( ua ) ||
-  		[];
+        /(ipod)/.exec( ua ) ||
+        /(iphone)/.exec( ua ) ||
+        /(android)/.exec( ua ) ||
+        /(windows phone)/.exec( ua ) ||
+        /(kindle)/.exec( ua ) ||
+        /(silk)/.exec( ua ) ||
+        /(blackberry)/.exec( ua ) ||
+        /(bb)/.exec( ua ) ||
+        /(playbook)/.exec( ua ) ||
+        /(win)/.exec( ua ) ||
+        /(mac)/.exec( ua ) ||
+        /(linux)/.exec( ua ) ||
+        /(cros)/i.exec( ua ) ||
+        [];
 
   	return {
   		browser: match[ 3 ] || match[ 1 ] || "",
