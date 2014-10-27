@@ -32,9 +32,15 @@
   		[];
 
   	var platform_match = /(ipad)/.exec( ua ) ||
+      /(ipod)/.exec( ua ) ||
   		/(iphone)/.exec( ua ) ||
   		/(android)/.exec( ua ) ||
   		/(windows phone)/.exec( ua ) ||
+      /(kindle)/.exec( ua ) ||
+      /(silk)/.exec( ua ) ||
+      /(blackberry)/.exec( ua ) ||
+      /(bb)/.exec( ua ) ||
+      /(playbook)/.exec( ua ) ||
   		/(win)/.exec( ua ) ||
   		/(mac)/.exec( ua ) ||
   		/(linux)/.exec( ua ) ||
@@ -62,7 +68,8 @@
   }
 
   // These are all considered mobile platforms, meaning they run a mobile browser
-  if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+  if ( browser.android || browser.ipad || browser.ipod || browser.iphone || browser[ "windows phone" ] ||
+      browser.kindle || browser.silk || browser.blackberry || browser.bb || browser.playbook) {
   	browser.mobile = true;
   }
 
@@ -77,8 +84,7 @@
   }
 
   // IE11 has a new token so we will assign it msie to avoid breaking changes
-  if ( browser.rv )
-  {
+  if ( browser.rv ) {
   	var ie = "msie";
 
   	matched.browser = ie;
@@ -86,8 +92,7 @@
   }
 
   // Opera 15+ are identified as opr
-  if ( browser.opr )
-  {
+  if ( browser.opr ) {
   	var opera = "opera";
 
   	matched.browser = opera;
@@ -95,8 +100,7 @@
   }
 
   // Stock Android browsers are marked as Safari on Android.
-  if ( browser.safari && browser.android )
-  {
+  if ( browser.safari && browser.android ) {
   	var android = "android";
 
   	matched.browser = android;
@@ -106,7 +110,6 @@
   // Assign the name and platform variable
   browser.name = matched.browser;
   browser.platform = matched.platform;
-
 
   jQuery.browser = browser;
 })( jQuery, window );
