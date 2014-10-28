@@ -21,30 +21,30 @@
   jQuery.uaMatch = function( ua ) {
     ua = ua.toLowerCase();
 
-    var match = /(opr)[\/]([\w.]+)/.exec( ua ) ||
-      /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+      /(msie) ([\w.]+)/.exec( ua ) ||
+      /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+      /(opr)[\/]([\w.]+)/.exec( ua ) ||
       /(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
       /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
-      /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
-      /(msie) ([\w.]+)/.exec( ua ) ||
       ua.indexOf("trident") >= 0 && /(rv)(?::| )([\w.]+)/.exec( ua ) ||
       ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
       [];
 
-    var platform_match = /(ipad)/.exec( ua ) ||
-      /(ipod)/.exec( ua ) ||
-      /(iphone)/.exec( ua ) ||
-      /(android)/.exec( ua ) ||
-      /(windows phone)/.exec( ua ) ||
-      /(kindle)/.exec( ua ) ||
-      /(silk)/.exec( ua ) ||
-      /(blackberry)/.exec( ua ) ||
+    var platform_match = /(android)/.exec( ua ) ||
       /(bb)/.exec( ua ) ||
-      /(playbook)/.exec( ua ) ||
-      /(win)/.exec( ua ) ||
-      /(mac)/.exec( ua ) ||
-      /(linux)/.exec( ua ) ||
+      /(blackberry)/.exec( ua ) ||
       /(cros)/i.exec( ua ) ||
+      /(ipad)/.exec( ua ) ||
+      /(iphone)/.exec( ua ) ||
+      /(ipod)/.exec( ua ) ||
+      /(kindle)/.exec( ua ) ||
+      /(linux)/.exec( ua ) ||
+      /(mac)/.exec( ua ) ||
+      /(playbook)/.exec( ua ) ||
+      /(silk)/.exec( ua ) ||
+      /(win)/.exec( ua ) ||
+      /(windows phone)/.exec( ua ) ||
       [];
 
     return {
@@ -68,8 +68,8 @@
   }
 
   // These are all considered mobile platforms, meaning they run a mobile browser
-  if ( browser.android || browser.ipad || browser.ipod || browser.iphone || browser[ "windows phone" ] ||
-        browser.kindle || browser.silk || browser.blackberry || browser.bb || browser.playbook) {
+  if ( browser.android || browser.bb || browser.blackberry || browser.ipad || browser.iphone ||
+      browser.ipod || browser.kindle || browser.playbook || browser.silk || browser[ "windows phone" ]) {
     browser.mobile = true;
   }
 
