@@ -765,8 +765,8 @@ casper.test.begin("when using BB10 stock browser", 6, function(test) {
       return $.browser;
     });
     
-    test.assert(browser.bb, "Browser should be BB10");
-    test.assertEquals(browser.name, ua.bb.name,"Browser name should be " + ua.bb.name);
+    test.assert(browser.blackberry, "Browser should be BlackBerry");
+    test.assertEquals(browser.name, ua.blackberry.name,"Browser name should be " + ua.blackberry.name);
 
     test.assertEquals(browser.version, ua.bb.v_10.version, "Version should be " + ua.bb.v_10.version);
     test.assertEquals(browser.versionNumber, ua.bb.v_10.versionNumber, "Version number should be " + ua.bb.v_10.versionNumber);

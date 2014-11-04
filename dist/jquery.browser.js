@@ -91,6 +91,14 @@
     browser[ie] = true;
   }
 
+  // BB10 is a newer OS version of blackberry
+  if ( browser.bb ) {
+    var blackberry = "blackberry";
+
+    matched.browser = blackberry;
+    browser[blackberry] = true;
+  }
+
   // Opera 15+ are identified as opr
   if ( browser.opr ) {
     var opera = "opera";

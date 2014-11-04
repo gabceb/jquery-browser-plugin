@@ -32,7 +32,6 @@ Reading the browser verion
 
 ```javascript
 	$.browser.android
-	$.browser.bb
 	$.browser.blackberry
 	$.browser.cros
 	$.browser.ipad
