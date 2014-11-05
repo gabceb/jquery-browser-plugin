@@ -680,7 +680,6 @@ casper.test.begin("when using Android 4.4 stock browser on Android", 6, function
 
   }).run(function(){
     test.done();
-    casper.exit();
   });
 });
 
@@ -704,7 +703,6 @@ casper.test.begin("when using Kindle 4 stock browser", 6, function(test) {
 
   }).run(function(){
     test.done();
-    casper.exit();
   });
 });
 
@@ -728,7 +726,6 @@ casper.test.begin("when using Kindle Silk 5 browser", 6, function(test) {
 
   }).run(function(){
     test.done();
-    casper.exit();
   });
 });
 
@@ -752,7 +749,6 @@ casper.test.begin("when using BlackBerry 7 stock browser", 6, function(test) {
 
   }).run(function(){
     test.done();
-    casper.exit();
   });
 });
 
@@ -776,7 +772,6 @@ casper.test.begin("when using BB10 stock browser", 6, function(test) {
 
   }).run(function(){
     test.done();
-    casper.exit();
   });
 });
 
