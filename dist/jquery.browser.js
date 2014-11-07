@@ -13,7 +13,17 @@
  * Date: 2013-07-29T17:23:27-07:00
  */
 
-(function( jQuery, window, undefined ) {
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], function ($) {
+            factory($, root);
+        });
+    } else {
+        // Browser globals
+        factory(jQuery, root);
+    }
+}(this, function(jQuery, window) {
   "use strict";
 
   var matched, browser;
@@ -107,6 +117,6 @@
   browser.name = matched.browser;
   browser.platform = matched.platform;
 
-
   jQuery.browser = browser;
-})( jQuery, window );
+  return browser;
+}));
