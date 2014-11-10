@@ -1,4 +1,6 @@
-test_url = "http://localhost:8008";
+/* global casper, require, $ */
+
+var test_url = "http://localhost:8008";
 
 require('casperserver.js').create(casper);
 casper.server.start();
@@ -7,7 +9,7 @@ casper.on('exit', function(status){
   casper.server.end();
 });
 
-ua = {
+var ua = {
   chrome : {
     windows: "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
     mac: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36",
@@ -482,7 +484,7 @@ casper.test.begin("when using Opera 15+ on Mac", 7, function(test) {
     test.assert(browser.opera, "Browser should be Opera");
     test.assertEquals(browser.name, ua.opera.name,"Browser name should be " + ua.opera.name);
 
-    test.assertEquals(browser.version, ua.opera.v_15.version, "Version should be " + ua.opera.v_15.version)
+    test.assertEquals(browser.version, ua.opera.v_15.version, "Version should be " + ua.opera.v_15.version);
     test.assertEquals(browser.versionNumber, ua.opera.v_15.versionNumber, "Version number should be " + ua.opera.v_15.versionNumber);
 
     test.assert(browser.desktop, "Browser platform should be desktop");
