@@ -32,7 +32,7 @@
     ua = ua.toLowerCase();
 
   	var match = /(edge)\/([\w.]+)/.exec( ua ) ||
-  	    /(opr)[\/]([\w.]+)/.exec( ua ) ||
+  		/(opr)[\/]([\w.]+)/.exec( ua ) ||
   		/(chrome)[ \/]([\w.]+)/.exec( ua ) ||
   		/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
   		/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
