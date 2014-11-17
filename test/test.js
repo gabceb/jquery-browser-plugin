@@ -40,7 +40,8 @@ ua = {
     windows : {
       v_9: "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)",
       v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
-      v_11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
+      v_11: 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko',
+      v_12: 'Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0'
     },
     win_phone : {
       v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 1020)"
@@ -442,6 +443,31 @@ casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
 
   }).run(function(){
     test.done();
+  });
+});
+
+casper.test.begin("when using IE12", 7, function(test) {
+  casper.userAgent(ua.ie.windows.v_12);
+
+  casper.start(test_url).then(function(){
+   
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+   
+    test.assert(browser.msie, "Browser should be IE");
+    test.assertEquals(browser.name, ua.ie.name,"Browser name should be " + ua.ie.name);
+
+    test.assertEquals(browser.version, "12.0", "Version should be 12.0");
+    test.assertEquals(browser.versionNumber, 12, "Version should be 12");
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.win, "Platform should be Windows");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
+
+  }).run(function(){
+   test.done();
   });
 });
 

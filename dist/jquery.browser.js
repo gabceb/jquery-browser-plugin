@@ -31,7 +31,8 @@
   jQuery.uaMatch = function( ua ) {
     ua = ua.toLowerCase();
 
-  	var match = /(opr)[\/]([\w.]+)/.exec( ua ) ||
+  	var match = /(edge)\/([\w.]+)/.exec( ua ) ||
+  		/(opr)[\/]([\w.]+)/.exec( ua ) ||
   		/(chrome)[ \/]([\w.]+)/.exec( ua ) ||
   		/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
   		/(webkit)[ \/]([\w.]+)/.exec( ua ) ||
@@ -87,7 +88,8 @@
   }
 
   // IE11 has a new token so we will assign it msie to avoid breaking changes
-  if ( browser.rv )
+  // IE12 disguises as Chrome, but adds a new Edge token.
+  if ( browser.rv || browser.edge )
   {
   	var ie = "msie";
 
