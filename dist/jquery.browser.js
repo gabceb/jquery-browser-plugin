@@ -17,7 +17,7 @@
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], function ($) {
-        factory($, root);
+      factory($, root);
     });
   } else {
     // Browser globals
@@ -34,7 +34,8 @@
     var match = /(edge)\/([\w.]+)/.exec( ua ) ||
         /(opr)[\/]([\w.]+)/.exec( ua ) ||
         /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
-        /(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
+        /(version)(applewebkit)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
+        /(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
         /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
         /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
         /(msie) ([\w.]+)/.exec( ua ) ||
@@ -49,12 +50,13 @@
         /(win)/.exec( ua ) ||
         /(mac)/.exec( ua ) ||
         /(linux)/.exec( ua ) ||
-        /(cros)/i.exec( ua ) ||
+        /(cros)/.exec( ua ) ||
         [];
 
     return {
-      browser: match[ 3 ] || match[ 1 ] || "",
-      version: match[ 2 ] || "0",
+      browser: match[ 5 ] || match[ 3 ] || match[ 1 ] || "",
+      version: match[ 2 ] || match[ 4 ] || "0",
+      versionNumber: match[ 4 ] || match[ 2 ] || "0",
       platform: platform_match[ 0 ] || ""
     };
   };
@@ -65,7 +67,7 @@
   if ( matched.browser ) {
     browser[ matched.browser ] = true;
     browser.version = matched.version;
-    browser.versionNumber = parseInt(matched.version);
+    browser.versionNumber = parseInt(matched.versionNumber, 10);
   }
 
   if ( matched.platform ) {
