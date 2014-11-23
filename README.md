@@ -28,17 +28,27 @@ Reading the browser verion
 
 ## Things not included in the original jQuery $.browser implementation
 
-- Detect Windows, Mac, Linux, iPad, iPhone, Android, Chrome OS, and Windows Phone useragents, in addition to desktop and mobile browsers
+- Detect specifically Windows, Mac, Linux, iPad, iPhone, iPod, Android, Kindle, BlackBerry, Chrome OS, and Windows Phone useragents
 
 ```javascript
+	$.browser.android
+	$.browser.blackberry
+	$.browser.cros
 	$.browser.ipad
 	$.browser.iphone
-	$.browser["windows phone"]
-	$.browser.android
-	$.browser.cros
-	$.browser.win
-	$.browser.mac
+	$.browser.ipod
+	$.browser.kindle
 	$.browser.linux
+	$.browser.mac
+	$.browser.playbook
+	$.browser.silk
+	$.browser.win
+	$.browser["windows phone"]
+```
+
+Alternatively, you can detect for generic classifications such as desktop or mobile
+
+```javascript
 	$.browser.desktop
 	$.browser.mobile
 ```
