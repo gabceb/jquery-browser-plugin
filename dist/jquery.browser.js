@@ -55,8 +55,8 @@
         /(mac)/.exec( ua ) ||
         /(playbook)/.exec( ua ) ||
         /(silk)/.exec( ua ) ||
-        /(win)/.exec( ua ) ||
         /(windows phone)/.exec( ua ) ||
+        /(win)/.exec( ua ) ||
         [];
 
     return {

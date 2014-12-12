@@ -13,17 +13,7 @@
  * Date: 2013-07-29T17:23:27-07:00
  */
 
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['jquery'], function ($) {
-      factory($, root);
-    });
-  } else {
-    // Browser globals
-    factory(jQuery, root);
-  }
-}(this, function(jQuery, window) {
+(function( jQuery, window, undefined ) {
   "use strict";
 
   var matched, browser;
@@ -31,38 +21,30 @@
   jQuery.uaMatch = function( ua ) {
     ua = ua.toLowerCase();
 
-    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
-        /(edge)\/([\w.]+)/.exec( ua ) ||
-        /(msie) ([\w.]+)/.exec( ua ) ||
-        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
-        /(opr)[\/]([\w.]+)/.exec( ua ) ||
-        /(version)(applewebkit)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
-        /(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
-        /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
-        ua.indexOf("trident") >= 0 && /(rv)(?::| )([\w.]+)/.exec( ua ) ||
-        ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
-        [];
+    var match = /(opr)[\/]([\w.]+)/.exec( ua ) ||
+      /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+      /(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
+      /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+      /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+      /(msie) ([\w.]+)/.exec( ua ) ||
+      ua.indexOf("trident") >= 0 && /(rv)(?::| )([\w.]+)/.exec( ua ) ||
+      ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+      [];
 
-    var platform_match = /(android)/.exec( ua ) ||
-        /(bb)/.exec( ua ) ||
-        /(blackberry)/.exec( ua ) ||
-        /(cros)/.exec( ua ) ||
-        /(ipad)/.exec( ua ) ||
-        /(iphone)/.exec( ua ) ||
-        /(ipod)/.exec( ua ) ||
-        /(kindle)/.exec( ua ) ||
-        /(linux)/.exec( ua ) ||
-        /(mac)/.exec( ua ) ||
-        /(playbook)/.exec( ua ) ||
-        /(silk)/.exec( ua ) ||
-        /(win)/.exec( ua ) ||
-        /(windows phone)/.exec( ua ) ||
-        [];
+    var platform_match = /(ipad)/.exec( ua ) ||
+      /(iphone)/.exec( ua ) ||
+      /(android)/.exec( ua ) ||
+      /(windows phone)/.exec( ua ) ||
+      /(win)/.exec( ua ) ||
+      /(mac)/.exec( ua ) ||
+      /(linux)/.exec( ua ) ||
+      /(cros)/.exec( ua ) ||
+      [];
 
     return {
-      browser: match[ 5 ] || match[ 3 ] || match[ 1 ] || "",
-      version: match[ 2 ] || match[ 4 ] || "0",
-      versionNumber: match[ 4 ] || match[ 2 ] || "0",
+      browser: match[ 3 ] || match[ 1 ] || "",
+      version: match[ 4 ] || match[ 2 ],
+      versionNumber: match[ 2 ] || "0",
       platform: platform_match[ 0 ] || ""
     };
   };
@@ -73,7 +55,7 @@
   if ( matched.browser ) {
     browser[ matched.browser ] = true;
     browser.version = matched.version;
-    browser.versionNumber = parseInt(matched.versionNumber, 10);
+    browser.versionNumber = parseInt(matched.versionNumber);
   }
 
   if ( matched.platform ) {
@@ -81,8 +63,7 @@
   }
 
   // These are all considered mobile platforms, meaning they run a mobile browser
-  if ( browser.android || browser.bb || browser.blackberry || browser.ipad || browser.iphone ||
-    browser.ipod || browser.kindle || browser.playbook || browser.silk || browser[ "windows phone" ]) {
+  if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
     browser.mobile = true;
   }
 
@@ -97,24 +78,17 @@
   }
 
   // IE11 has a new token so we will assign it msie to avoid breaking changes
-  // IE12 disguises itself as Chrome, but adds a new Edge token.
-  if ( browser.rv || browser.edge ) {
+  if ( browser.rv )
+  {
     var ie = "msie";
 
     matched.browser = ie;
     browser[ie] = true;
   }
 
-  // BB10 is a newer OS version of BlackBerry
-  if ( browser.bb ) {
-    var blackberry = "blackberry";
-
-    matched.browser = blackberry;
-    browser[blackberry] = true;
-  }
-
   // Opera 15+ are identified as opr
-  if ( browser.opr ) {
+  if ( browser.opr )
+  {
     var opera = "opera";
 
     matched.browser = opera;
@@ -122,7 +96,8 @@
   }
 
   // Stock Android browsers are marked as Safari on Android.
-  if ( browser.safari && browser.android ) {
+  if ( browser.safari && browser.android )
+  {
     var android = "android";
 
     matched.browser = android;
@@ -133,6 +108,6 @@
   browser.name = matched.browser;
   browser.platform = matched.platform;
 
+
   jQuery.browser = browser;
-  return browser;
-}));
+})( jQuery, window );
