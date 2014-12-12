@@ -44,13 +44,19 @@
         [];
 
     var platform_match = /(ipad)/.exec( ua ) ||
+        /(ipod)/.exec( ua ) ||
         /(iphone)/.exec( ua ) ||
+        /(kindle)/.exec( ua ) ||
+        /(silk)/.exec( ua ) ||
         /(android)/.exec( ua ) ||
         /(windows phone)/.exec( ua ) ||
         /(win)/.exec( ua ) ||
         /(mac)/.exec( ua ) ||
         /(linux)/.exec( ua ) ||
         /(cros)/.exec( ua ) ||
+        /(playbook)/.exec( ua ) ||
+        /(bb)/.exec( ua ) ||
+        /(blackberry)/.exec( ua ) ||
         [];
 
     return {
@@ -75,7 +81,8 @@
   }
 
   // These are all considered mobile platforms, meaning they run a mobile browser
-  if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+  if ( browser.android || browser.bb || browser.blackberry || browser.ipad || browser.iphone ||
+    browser.ipod || browser.kindle || browser.playbook || browser.silk || browser[ "windows phone" ]) {
     browser.mobile = true;
   }
 
@@ -98,6 +105,30 @@
     browser[ie] = true;
   }
 
+  // Blackberry browsers are marked as Safari on BlackBerry
+  if ( browser.safari && browser.blackberry ) {
+    var blackberry = "blackberry";
+
+    matched.browser = blackberry;
+    browser[blackberry] = true;
+  }
+
+  // Playbook browsers are marked as Safari on Playbook
+  if ( browser.safari && browser.playbook ) {
+    var playbook = "playbook";
+
+    matched.browser = playbook;
+    browser[playbook] = true;
+  }
+
+  // BB10 is a newer OS version of BlackBerry
+  if ( browser.bb ) {
+    var bb = "blackberry";
+
+    matched.browser = bb;
+    browser[bb] = true;
+  }
+
   // Opera 15+ are identified as opr
   if ( browser.opr ) {
     var opera = "opera";
@@ -112,6 +143,22 @@
 
     matched.browser = android;
     browser[android] = true;
+  }
+
+  // Kindle browsers are marked as Safari on Kindle
+  if ( browser.safari && browser.kindle ) {
+    var kindle = "kindle";
+
+    matched.browser = kindle;
+    browser[kindle] = true;
+  }
+
+   // Kindle Silk browsers are marked as Safari on Kindle
+  if ( browser.safari && browser.silk ) {
+    var silk = "silk";
+
+    matched.browser = silk;
+    browser[silk] = true;
   }
 
   // Assign the name and platform variable
