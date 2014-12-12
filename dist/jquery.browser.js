@@ -31,26 +31,32 @@
   jQuery.uaMatch = function( ua ) {
     ua = ua.toLowerCase();
 
-    var match = /(edge)\/([\w.]+)/.exec( ua ) ||
+    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(edge)\/([\w.]+)/.exec( ua ) ||
+        /(msie) ([\w.]+)/.exec( ua ) ||
+        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
         /(opr)[\/]([\w.]+)/.exec( ua ) ||
-        /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
         /(version)(applewebkit)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
         /(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
         /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
-        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
-        /(msie) ([\w.]+)/.exec( ua ) ||
         ua.indexOf("trident") >= 0 && /(rv)(?::| )([\w.]+)/.exec( ua ) ||
         ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
         [];
 
-    var platform_match = /(ipad)/.exec( ua ) ||
+    var platform_match = /(android)/.exec( ua ) ||
+        /(bb)/.exec( ua ) ||
+        /(blackberry)/.exec( ua ) ||
+        /(cros)/.exec( ua ) ||
+        /(ipad)/.exec( ua ) ||
         /(iphone)/.exec( ua ) ||
-        /(android)/.exec( ua ) ||
+        /(ipod)/.exec( ua ) ||
+        /(kindle)/.exec( ua ) ||
+        /(linux)/.exec( ua ) ||
+        /(mac)/.exec( ua ) ||
+        /(playbook)/.exec( ua ) ||
+        /(silk)/.exec( ua ) ||
         /(windows phone)/.exec( ua ) ||
         /(win)/.exec( ua ) ||
-        /(mac)/.exec( ua ) ||
-        /(linux)/.exec( ua ) ||
-        /(cros)/.exec( ua ) ||
         [];
 
     return {
@@ -75,7 +81,8 @@
   }
 
   // These are all considered mobile platforms, meaning they run a mobile browser
-  if ( browser.android || browser.ipad || browser.iphone || browser[ "windows phone" ] ) {
+  if ( browser.android || browser.bb || browser.blackberry || browser.ipad || browser.iphone ||
+    browser.ipod || browser.kindle || browser.playbook || browser.silk || browser[ "windows phone" ]) {
     browser.mobile = true;
   }
 
@@ -96,6 +103,14 @@
 
     matched.browser = ie;
     browser[ie] = true;
+  }
+
+  // BB10 is a newer OS version of BlackBerry
+  if ( browser.bb ) {
+    var blackberry = "blackberry";
+
+    matched.browser = blackberry;
+    browser[blackberry] = true;
   }
 
   // Opera 15+ are identified as opr
