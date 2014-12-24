@@ -12,7 +12,6 @@
  *
  * Date: 12-12-2014
  */
-
 /*global window: false */
 
 (function (factory) {
