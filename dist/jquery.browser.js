@@ -13,17 +13,20 @@
  * Date: 12-12-2014
  */
 
-(function (root, factory) {
+(function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], function ($) {
-      factory($, root);
+      factory($);
     });
+  } else if (typeof module === 'object' && typeof module.exports === 'object') {
+    // Node-like environment
+    module.exports = factory(require('jquery'));
   } else {
     // Browser globals
-    factory(jQuery, root);
+    factory(jQuery);
   }
-}(this, function(jQuery, window) {
+}(function(jQuery) {
   "use strict";
 
   var matched, browser;
