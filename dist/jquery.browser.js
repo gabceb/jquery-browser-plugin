@@ -13,6 +13,8 @@
  * Date: 12-12-2014
  */
 
+/*global window: false */
+
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -70,7 +72,6 @@
     };
   };
 
-  /*global window: false */
   matched = jQuery.uaMatch( window.navigator.userAgent );
   browser = {};
 
