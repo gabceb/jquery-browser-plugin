@@ -70,6 +70,7 @@
     };
   };
 
+  /*global window: false */
   matched = jQuery.uaMatch( window.navigator.userAgent );
   browser = {};
 
