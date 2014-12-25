@@ -1,6 +1,12 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    browserify: {
+      'test/test-require.js': ['test/src/require/test.js'],
+      options: {
+        banner: '/*\n\n ****** Testing Require file ****** \n\n*/'
+      }
+    },
     jshint: {
       files: ['Gruntfile.js', 'dist/jquery.browser.js', 'test/test.js'],
 
@@ -33,6 +39,11 @@ module.exports = function(grunt) {
         command: "casperjs test test/test.js",
         stdout: true,
         stderr: true
+      },
+      'test-require': {
+        command: "./node_modules/.bin/mocha test/test-require.js",
+        stdout: true,
+        stderr: true
       }
     }
   });
@@ -41,7 +52,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('default', ['jshint', 'uglify', 'copy']);
-  grunt.registerTask('test', ['default', 'exec']);
+
+  grunt.registerTask('test-jquery', ['default', 'exec']);
+  grunt.registerTask('test-require', ['default', 'browserify', 'exec:test-require']);
+  grunt.registerTask('test', ['test-jquery', 'test-require']);
 };
