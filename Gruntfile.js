@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       }
     },
     exec: {
-      test: {
+      'test-jquery': {
         command: "casperjs test test/test.js",
         stdout: true,
         stderr: true
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint', 'uglify', 'copy']);
 
-  grunt.registerTask('test-jquery', ['default', 'exec']);
+  grunt.registerTask('test-jquery', ['default', 'exec:test-jquery']);
   grunt.registerTask('test-require', ['default', 'browserify', 'exec:test-require']);
   grunt.registerTask('test', ['test-jquery', 'test-require']);
 };
