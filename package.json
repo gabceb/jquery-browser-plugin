@@ -5,6 +5,9 @@
     "Gabriel Cebrian <gabceb@gmail.com>",
     "jQuery Team <https://github.com/gabceb/jquery-browser-plugin/wiki/Authors>"
   ],
+  "scripts": {
+    "test": "grunt test"
+  },
   "description": "A jQuery plugin for browser detection.",
   "main": "dist/jquery.browser.js",
   "repository": "git@github.com:gabceb/jquery-browser-plugin.git",
