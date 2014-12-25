@@ -95,7 +95,7 @@ Run `npm install` to install all dependencies including grunt and all tasks
 
 Once Casperjs and the grunt-cli npm package is installed you can execute all the tests by using:
 
-	grunt test
+	npm test
 
 ## Development
 
