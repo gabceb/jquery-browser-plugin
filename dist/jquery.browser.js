@@ -32,7 +32,7 @@
 
   var matched, browser;
 
-  jQuery.uaMatch = function( ua ) {
+  window.jQBrowser = function( ua ) {
     ua = ua.toLowerCase();
 
     var match = /(edge)\/([\w.]+)/.exec( ua ) ||
@@ -71,7 +71,7 @@
     };
   };
 
-  matched = jQuery.uaMatch( window.navigator.userAgent );
+  matched = jQBrowser( window.navigator.userAgent );
   browser = {};
 
   if ( matched.browser ) {
