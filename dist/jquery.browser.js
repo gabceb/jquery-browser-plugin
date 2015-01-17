@@ -12,7 +12,7 @@
  *
  * Date: 12-12-2014
  */
-/*global window: false */
+/*global window: false, jQBrowser */
 
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
@@ -29,8 +29,6 @@
   }
 }(function(jQuery) {
   "use strict";
-
-  var matched, browser;
 
   window.jQBrowser = function( ua ) {
     // If an UA is not provided, default to the current browser UA.
@@ -75,102 +73,101 @@
           platform: platform_match[ 0 ] || ""
         };
 
-  if ( matched.browser ) {
-    browser[ matched.browser ] = true;
-    browser.version = matched.version;
-    browser.versionNumber = parseInt(matched.versionNumber, 10);
-  }
+    if ( matched.browser ) {
+      browser[ matched.browser ] = true;
+      browser.version = matched.version;
+      browser.versionNumber = parseInt(matched.versionNumber, 10);
+    }
 
-  if ( matched.platform ) {
-    browser[ matched.platform ] = true;
-  }
+    if ( matched.platform ) {
+      browser[ matched.platform ] = true;
+    }
 
-  // These are all considered mobile platforms, meaning they run a mobile browser
-  if ( browser.android || browser.bb || browser.blackberry || browser.ipad || browser.iphone ||
-    browser.ipod || browser.kindle || browser.playbook || browser.silk || browser[ "windows phone" ]) {
-    browser.mobile = true;
-  }
+    // These are all considered mobile platforms, meaning they run a mobile browser
+    if ( browser.android || browser.bb || browser.blackberry || browser.ipad || browser.iphone ||
+      browser.ipod || browser.kindle || browser.playbook || browser.silk || browser[ "windows phone" ]) {
+      browser.mobile = true;
+    }
 
-  // These are all considered desktop platforms, meaning they run a desktop browser
-  if ( browser.cros || browser.mac || browser.linux || browser.win ) {
-    browser.desktop = true;
-  }
+    // These are all considered desktop platforms, meaning they run a desktop browser
+    if ( browser.cros || browser.mac || browser.linux || browser.win ) {
+      browser.desktop = true;
+    }
 
-  // Chrome, Opera 15+ and Safari are webkit based browsers
-  if ( browser.chrome || browser.opr || browser.safari ) {
-    browser.webkit = true;
-  }
+    // Chrome, Opera 15+ and Safari are webkit based browsers
+    if ( browser.chrome || browser.opr || browser.safari ) {
+      browser.webkit = true;
+    }
 
-  // IE11 has a new token so we will assign it msie to avoid breaking changes
-  // IE12 disguises itself as Chrome, but adds a new Edge token.
-  if ( browser.rv || browser.edge ) {
-    var ie = "msie";
+    // IE11 has a new token so we will assign it msie to avoid breaking changes
+    // IE12 disguises itself as Chrome, but adds a new Edge token.
+    if ( browser.rv || browser.edge ) {
+      var ie = "msie";
 
-    matched.browser = ie;
-    browser[ie] = true;
-  }
+      matched.browser = ie;
+      browser[ie] = true;
+    }
 
-  // Blackberry browsers are marked as Safari on BlackBerry
-  if ( browser.safari && browser.blackberry ) {
-    var blackberry = "blackberry";
+    // Blackberry browsers are marked as Safari on BlackBerry
+    if ( browser.safari && browser.blackberry ) {
+      var blackberry = "blackberry";
 
-    matched.browser = blackberry;
-    browser[blackberry] = true;
-  }
+      matched.browser = blackberry;
+      browser[blackberry] = true;
+    }
 
-  // Playbook browsers are marked as Safari on Playbook
-  if ( browser.safari && browser.playbook ) {
-    var playbook = "playbook";
+    // Playbook browsers are marked as Safari on Playbook
+    if ( browser.safari && browser.playbook ) {
+      var playbook = "playbook";
 
-    matched.browser = playbook;
-    browser[playbook] = true;
-  }
+      matched.browser = playbook;
+      browser[playbook] = true;
+    }
 
-  // BB10 is a newer OS version of BlackBerry
-  if ( browser.bb ) {
-    var bb = "blackberry";
+    // BB10 is a newer OS version of BlackBerry
+    if ( browser.bb ) {
+      var bb = "blackberry";
 
-    matched.browser = bb;
-    browser[bb] = true;
-  }
+      matched.browser = bb;
+      browser[bb] = true;
+    }
 
-  // Opera 15+ are identified as opr
-  if ( browser.opr ) {
-    var opera = "opera";
+    // Opera 15+ are identified as opr
+    if ( browser.opr ) {
+      var opera = "opera";
 
-    matched.browser = opera;
-    browser[opera] = true;
-  }
+      matched.browser = opera;
+      browser[opera] = true;
+    }
 
-  // Stock Android browsers are marked as Safari on Android.
-  if ( browser.safari && browser.android ) {
-    var android = "android";
+    // Stock Android browsers are marked as Safari on Android.
+    if ( browser.safari && browser.android ) {
+      var android = "android";
 
-    matched.browser = android;
-    browser[android] = true;
-  }
+      matched.browser = android;
+      browser[android] = true;
+    }
 
-  // Kindle browsers are marked as Safari on Kindle
-  if ( browser.safari && browser.kindle ) {
-    var kindle = "kindle";
+    // Kindle browsers are marked as Safari on Kindle
+    if ( browser.safari && browser.kindle ) {
+      var kindle = "kindle";
 
-    matched.browser = kindle;
-    browser[kindle] = true;
-  }
+      matched.browser = kindle;
+      browser[kindle] = true;
+    }
 
-   // Kindle Silk browsers are marked as Safari on Kindle
-  if ( browser.safari && browser.silk ) {
-    var silk = "silk";
+     // Kindle Silk browsers are marked as Safari on Kindle
+    if ( browser.safari && browser.silk ) {
+      var silk = "silk";
 
-    matched.browser = silk;
-    browser[silk] = true;
-  }
+      matched.browser = silk;
+      browser[silk] = true;
+    }
 
-  // Assign the name and platform variable
-  browser.name = matched.browser;
-  browser.platform = matched.platform;
-  return browser;
-
+    // Assign the name and platform variable
+    browser.name = matched.browser;
+    browser.platform = matched.platform;
+    return browser;
   };
 
   // Only assign to jQuery.browser if jQuery is loaded
