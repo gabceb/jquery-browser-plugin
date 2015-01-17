@@ -17,7 +17,7 @@
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['jquery'], function ($) {
+    define(['jquery'], function($) {
       factory($);
     });
   } else if (typeof module === 'object' && typeof module.exports === 'object') {
@@ -25,7 +25,7 @@
     module.exports = factory(require('jquery'));
   } else {
     // Browser globals
-    factory(jQuery);
+    factory(window.jQuery);
   }
 }(function(jQuery) {
   "use strict";
@@ -67,16 +67,13 @@
         /(blackberry)/.exec( ua ) ||
         [];
 
-    return {
-      browser: match[ 5 ] || match[ 3 ] || match[ 1 ] || "",
-      version: match[ 2 ] || match[ 4 ] || "0",
-      versionNumber: match[ 4 ] || match[ 2 ] || "0",
-      platform: platform_match[ 0 ] || ""
-    };
-  };
-
-  matched = jQBrowser( window.navigator.userAgent );
-  browser = {};
+    var browser = {},
+        matched = {
+          browser: match[ 5 ] || match[ 3 ] || match[ 1 ] || "",
+          version: match[ 2 ] || match[ 4 ] || "0",
+          versionNumber: match[ 4 ] || match[ 2 ] || "0",
+          platform: platform_match[ 0 ] || ""
+        };
 
   if ( matched.browser ) {
     browser[ matched.browser ] = true;
@@ -172,7 +169,13 @@
   // Assign the name and platform variable
   browser.name = matched.browser;
   browser.platform = matched.platform;
-
-  jQuery.browser = browser;
   return browser;
+
+  };
+
+  // Only assign to jQuery.browser if jQuery is loaded
+  if ( jQuery ) {
+    var browser = jQBrowser( window.navigator.userAgent );
+    jQuery.browser = browser;
+  }
 }));
