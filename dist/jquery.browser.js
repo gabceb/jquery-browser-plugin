@@ -17,8 +17,8 @@
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['jquery'], function($) {
-      factory($);
+    define(['jquery'], function ($) {
+      return factory($);
     });
   } else if (typeof module === 'object' && typeof module.exports === 'object') {
     // Node-like environment
