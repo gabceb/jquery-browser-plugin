@@ -827,3 +827,51 @@ casper.test.begin("when using BlackBerry PlayBook stock browser", 6, function(te
     casper.exit();
   });
 });
+
+casper.test.begin("when using Chrome on Windows w/o jQuery", 7, function(test) {
+  casper.userAgent(ua.chrome.windows);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return window.jQBrowser;
+    });
+
+    test.assert(browser.chrome, "Browser should be Chrome");
+    test.assertEquals(browser.name, ua.chrome.name,"Browser name should be " + ua.chrome.name);
+
+    test.assert(browser.webkit, "Browser should be WebKit based");
+    test.assertEquals(browser.version, ua.chrome.version, "String version should be " + ua.chrome.version);
+    test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Number version should be " + ua.chrome.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.win, "Platform should be Windows");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when trying to match a browser that is not the browser used by the user", 7, function(test) {
+  casper.userAgent(ua.chrome.mac); // Use the Mac Chrome browser
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return window.jQBrowser.uaMatch(ua.chrome.windows); // Match the Windows Chrome browser
+    });
+
+    test.assert(browser.chrome, "Browser should be Chrome");
+    test.assertEquals(browser.name, ua.chrome.name,"Browser name should be " + ua.chrome.name);
+
+    test.assert(browser.webkit, "Browser should be WebKit based");
+    test.assertEquals(browser.version, ua.chrome.version, "String version should be " + ua.chrome.version);
+    test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Number version should be " + ua.chrome.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.win, "Platform should be Windows");
+
+  }).run(function(){
+    test.done();
+  });
+});
