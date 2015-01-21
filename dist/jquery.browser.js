@@ -179,4 +179,6 @@
   if ( jQuery ) {
     jQuery.browser = window.jQBrowser;
   }
+
+  return window.jQBrowser;
 }));
