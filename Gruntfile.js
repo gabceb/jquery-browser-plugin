@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      main:{
+      main: {
         src: "dist/<%= pkg.name %>.js",
         dest: "test/src/<%= pkg.name %>.js"
       }

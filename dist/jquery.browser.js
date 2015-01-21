@@ -12,7 +12,7 @@
  *
  * Date: 12-12-2014
  */
-/*global window: false, jQBrowser */
+/*global window: false */
 
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
@@ -30,7 +30,7 @@
 }(function(jQuery) {
   "use strict";
 
-  window.jQBrowser = function( ua ) {
+  function uaMatch( ua ) {
     // If an UA is not provided, default to the current browser UA.
     if ( ua === undefined ) {
       ua = window.navigator.userAgent;
@@ -168,11 +168,15 @@
     browser.name = matched.browser;
     browser.platform = matched.platform;
     return browser;
-  };
+  }
+
+  // Run the matching process, also assign the function to the returned object
+  // for manual, jQuery-free use if desired
+  window.jQBrowser = uaMatch( window.navigator.userAgent );
+  window.jQBrowser.uaMatch = uaMatch;
 
   // Only assign to jQuery.browser if jQuery is loaded
   if ( jQuery ) {
-    var browser = jQBrowser( window.navigator.userAgent );
-    jQuery.browser = browser;
+    jQuery.browser = window.jQBrowser;
   }
 }));
