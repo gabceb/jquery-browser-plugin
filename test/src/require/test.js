@@ -9,7 +9,7 @@ var browser = require('../jquery.browser.js');
 
 var should = require('chai').should();
 
-describe('jQuery browser', function() {
+describe('require jQuery browser', function() {
   it('should have the correct properties for a Chrome browser on a Mac', function(done) {
     browser.webkit.should.be.ok;
     browser.mac.should.be.ok;
