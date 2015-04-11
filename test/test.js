@@ -26,6 +26,7 @@ var ua = {
     mac: "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Safari/537.71",
     ipad: "Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
     iphone: "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
+    ipod: "Mozilla/5.0 (iPod; CPU iPod OS 7_0 like Mac OS X) AppleWebKit/537.71 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
     version: "537.71",
     versionNumber: 7,
     name: "safari"
@@ -78,6 +79,46 @@ var ua = {
       versionNumber: 4
     },
     name: "android"
+  },
+  kindle : {
+    v_4: {
+      kindle : "Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Kindle Fire Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+      version: "533.1",
+      versionNumber: 4
+    },
+    name: "kindle"
+  },
+  silk : {
+    v_5: {
+      silk : "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.1.0-80) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true",
+      version: "533.16",
+      versionNumber: 5
+    },
+    name: "silk"
+  },
+  blackberry : {
+    v_7: {
+      blackberry : "Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+",
+      version: "534.11",
+      versionNumber: 7
+    },
+    name: "blackberry"
+  },
+  bb : {
+    v_10: {
+      bb : "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.1 (KHTML, like Gecko) Version/10.0.0.1337 Mobile Safari/537.1",
+      version: "537.1",
+      versionNumber: 10
+    },
+    name: "bb"
+  },
+  playbook : {
+    v_7: {
+      playbook : "Mozilla/5.0 (PlayBook; U; RIM Tablet OS 2.1.0; en-US) AppleWebKit/536.2+ (KHTML, like Gecko) Version/7.2.1.0 Safari/536.2+",
+      version: "536.2",
+      versionNumber: 7
+    },
+    name: "playbook"
   }
 };
 
@@ -342,6 +383,30 @@ casper.test.begin("when using Safari on iPhone", 7, function(test) {
 
     test.assert(browser.mobile, "Browser platform should be mobile");
     test.assert(browser.iphone, "Platform should be iPhone");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Safari on iPod", 7, function(test) {
+  casper.userAgent(ua.safari.ipod);
+
+  casper.start(test_url).then(function(){
+   
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+   
+    test.assert(browser.safari, "Browser should be Safari");
+    test.assertEquals(browser.name, ua.safari.name,"Browser name should be " + ua.safari.name);
+
+    test.assert(browser.webkit, "Browser should be WebKit based");
+    test.assertEquals(browser.version, ua.safari.version, "Version should be " + ua.safari.version);
+    test.assertEquals(browser.versionNumber, ua.safari.versionNumber, "Version number should be " + ua.safari.versionNumber);
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.ipod, "Platform should be iPod");
 
   }).run(function(){
     test.done();
@@ -644,6 +709,169 @@ casper.test.begin("when using Android 4.4 stock browser on Android", 6, function
 
   }).run(function(){
     test.done();
+  });
+});
+
+casper.test.begin("when using Kindle 4 stock browser", 6, function(test) {
+  casper.userAgent(ua.kindle.v_4.kindle);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.kindle, "Browser should be Kindle");
+    test.assertEquals(browser.name, ua.kindle.name,"Browser name should be " + ua.kindle.name);
+
+    test.assertEquals(browser.version, ua.kindle.v_4.version, "Version should be " + ua.kindle.v_4.version);
+    test.assertEquals(browser.versionNumber, ua.kindle.v_4.versionNumber, "Version number should be " + ua.kindle.v_4.versionNumber);
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.webkit, "Browser should be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Kindle Silk 5 browser", 6, function(test) {
+  casper.userAgent(ua.silk.v_5.silk);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.silk, "Browser should be Silk");
+    test.assertEquals(browser.name, ua.silk.name,"Browser name should be " + ua.silk.name);
+
+    test.assertEquals(browser.version, ua.silk.v_5.version, "Version should be " + ua.silk.v_5.version);
+    test.assertEquals(browser.versionNumber, ua.silk.v_5.versionNumber, "Version number should be " + ua.silk.v_5.versionNumber);
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.webkit, "Browser should be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using BlackBerry 7 stock browser", 6, function(test) {
+  casper.userAgent(ua.blackberry.v_7.blackberry);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.blackberry, "Browser should be BlackBerry");
+    test.assertEquals(browser.name, ua.blackberry.name,"Browser name should be " + ua.blackberry.name);
+
+    test.assertEquals(browser.version, ua.blackberry.v_7.version, "Version should be " + ua.blackberry.v_7.version);
+    test.assertEquals(browser.versionNumber, ua.blackberry.v_7.versionNumber, "Version number should be " + ua.blackberry.v_7.versionNumber);
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.webkit, "Browser should be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using BB10 stock browser", 6, function(test) {
+  casper.userAgent(ua.bb.v_10.bb);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.blackberry, "Browser should be BlackBerry");
+    test.assertEquals(browser.name, ua.blackberry.name,"Browser name should be " + ua.blackberry.name);
+
+    test.assertEquals(browser.version, ua.bb.v_10.version, "Version should be " + ua.bb.v_10.version);
+    test.assertEquals(browser.versionNumber, ua.bb.v_10.versionNumber, "Version number should be " + ua.bb.v_10.versionNumber);
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.webkit, "Browser should be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using BlackBerry PlayBook stock browser", 6, function(test) {
+  casper.userAgent(ua.playbook.v_7.playbook);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+    
+    test.assert(browser.playbook, "Browser should be BlackBerry PlayBook");
+    test.assertEquals(browser.name, ua.playbook.name,"Browser name should be " + ua.playbook.name);
+
+    test.assertEquals(browser.version, ua.playbook.v_7.version, "Version should be " + ua.playbook.v_7.version);
+    test.assertEquals(browser.versionNumber, ua.playbook.v_7.versionNumber, "Version number should be " + ua.playbook.v_7.versionNumber);
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser.webkit, "Browser should be WebKit based");
+
+  }).run(function(){
+    test.done();
     casper.exit();
+  });
+});
+
+casper.test.begin("when using Chrome on Windows w/o jQuery", 7, function(test) {
+  casper.userAgent(ua.chrome.windows);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return window.jQBrowser;
+    });
+
+    test.assert(browser.chrome, "Browser should be Chrome");
+    test.assertEquals(browser.name, ua.chrome.name,"Browser name should be " + ua.chrome.name);
+
+    test.assert(browser.webkit, "Browser should be WebKit based");
+    test.assertEquals(browser.version, ua.chrome.version, "String version should be " + ua.chrome.version);
+    test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Number version should be " + ua.chrome.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.win, "Platform should be Windows");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when trying to match a browser that is not the browser used by the user", 7, function(test) {
+  casper.userAgent(ua.chrome.mac); // Use the Mac Chrome browser
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return window.jQBrowser.uaMatch(ua.chrome.windows); // Match the Windows Chrome browser
+    });
+
+    test.assert(browser.chrome, "Browser should be Chrome");
+    test.assertEquals(browser.name, ua.chrome.name,"Browser name should be " + ua.chrome.name);
+
+    test.assert(browser.webkit, "Browser should be WebKit based");
+    test.assertEquals(browser.version, ua.chrome.version, "String version should be " + ua.chrome.version);
+    test.assertEquals(browser.versionNumber, ua.chrome.versionNumber, "Number version should be " + ua.chrome.versionNumber);
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.win, "Platform should be Windows");
+
+  }).run(function(){
+    test.done();
   });
 });

@@ -7,6 +7,9 @@ lib-cov
 *.pid
 *.gz
 
+test/src/jquery.browser.js
+test/test-require.js
+
 pids
 logs
 results
