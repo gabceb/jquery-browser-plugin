@@ -1,5 +1,5 @@
-Copyright 2013 jQuery Foundation and other contributors, http://jquery.com/
-Modifications Copyright 2013 Gabriel Cebrian, https://www.github.com/gabceb
+Copyright 2015 jQuery Foundation and other contributors, http://jquery.com/
+Modifications Copyright 2015 Gabriel Cebrian, https://www.github.com/gabceb
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
