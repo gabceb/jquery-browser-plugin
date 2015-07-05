@@ -11,7 +11,7 @@ Include script *after* the jQuery library:
 <script src="/path/to/jquery.browser.js"></script>
 ```
 
-Alternatively, you can use the plugin without jQuery by substituting `$.browser` for the global `jQBrowser` object.
+Alternatively, you can use the plugin without jQuery by using the global object `jQBrowser` instead of `$.browser`.
 
 ## Usage
 
