@@ -9,7 +9,7 @@
         "html5",
         "support"
     ],
-    "version": "0.0.6",
+    "version": "0.0.8",
     "author": {
         "name": "Gabriel Cebrian. Initial implementation by the jQuery Team",
         "url": "https://github.com/gabceb/jquery-browser-plugin/wiki/Authors"
