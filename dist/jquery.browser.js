@@ -101,12 +101,20 @@
     }
 
     // IE11 has a new token so we will assign it msie to avoid breaking changes
-    // IE12 disguises itself as Chrome, but adds a new Edge token.
-    if ( browser.rv || browser.edge || browser.iemobile) {
+    if ( browser.rv || browser.iemobile) {
       var ie = "msie";
 
       matched.browser = ie;
       browser[ie] = true;
+    }
+
+    // Edge is officially known as Microsoft Edge, so rewrite the key to match
+    if ( browser.edge ) {
+      delete browser.edge;
+      var msedge = "msedge";
+
+      matched.browser = msedge;
+      browser[msedge] = true;
     }
 
     // Blackberry browsers are marked as Safari on BlackBerry
