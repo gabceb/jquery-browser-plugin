@@ -47,7 +47,8 @@ var ua = {
       v_12: "Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0"
     },
     win_phone : {
-      v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 1020)"
+      v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 1020)",
+      v_11: "Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 520) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537"
     },
     name: "msie"
   },
@@ -463,7 +464,6 @@ casper.test.begin("when using IE10", 7, function(test) {
   });
 });
 
-
 casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
   casper.userAgent(ua.ie.win_phone.v_10);
 
@@ -478,6 +478,31 @@ casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
 
     test.assertEquals(browser.version, "10.0", "Version should be 10.0");
     test.assertEquals(browser.versionNumber, 10, "Version should be 10");
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser["windows phone"], "Platform should be Windows Phone");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using IE11 on a Windows Phone", 7, function(test) {
+  casper.userAgent(ua.ie.win_phone.v_11);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+
+    test.assert(browser.msie, "Browser should be IE");
+    test.assertEquals(browser.name, ua.ie.name,"Browser name should be " + ua.ie.name);
+
+    test.assertEquals(browser.version, "11.0", "Version should be 11.0");
+    test.assertEquals(browser.versionNumber, 11, "Version should be 11");
 
     test.assert(browser.mobile, "Browser platform should be mobile");
     test.assert(browser["windows phone"], "Platform should be Windows Phone");
