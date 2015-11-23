@@ -40,17 +40,26 @@ var ua = {
     name: "mozilla"
   },
   ie: {
-    windows : {
+    windows: {
       v_9: "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0)",
       v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
-      v_11: "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko",
-      v_12: "Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0"
+      v_11: "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"
     },
-    win_phone : {
+    win_phone: {
       v_10: "Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 1020)",
       v_11: "Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 520) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537"
     },
     name: "msie"
+  },
+  msedge: {
+    windows: {
+      v_12: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.0",
+      v_13: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586"
+    },
+    win_phone: {
+      v_13: "Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; NOKIA; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/13.10586"
+    },
+    name: "msedge"
   },
   opera: {
     v_15: {
@@ -489,31 +498,6 @@ casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
   });
 });
 
-casper.test.begin("when using IE11 on a Windows Phone", 7, function(test) {
-  casper.userAgent(ua.ie.win_phone.v_11);
-
-  casper.start(test_url).then(function(){
-
-    var browser = casper.evaluate(function(){
-      return $.browser;
-    });
-
-    test.assert(browser.msie, "Browser should be IE");
-    test.assertEquals(browser.name, ua.ie.name,"Browser name should be " + ua.ie.name);
-
-    test.assertEquals(browser.version, "11.0", "Version should be 11.0");
-    test.assertEquals(browser.versionNumber, 11, "Version should be 11");
-
-    test.assert(browser.mobile, "Browser platform should be mobile");
-    test.assert(browser["windows phone"], "Platform should be Windows Phone");
-
-    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
-
-  }).run(function(){
-    test.done();
-  });
-});
-
 casper.test.begin("when using IE11", 7, function(test) {
   casper.userAgent(ua.ie.windows.v_11);
 
@@ -539,8 +523,8 @@ casper.test.begin("when using IE11", 7, function(test) {
   });
 });
 
-casper.test.begin("when using IE12", 7, function(test) {
-  casper.userAgent(ua.ie.windows.v_12);
+casper.test.begin("when using IE11 on a Windows Phone", 7, function(test) {
+  casper.userAgent(ua.ie.win_phone.v_11);
 
   casper.start(test_url).then(function(){
 
@@ -550,6 +534,31 @@ casper.test.begin("when using IE12", 7, function(test) {
 
     test.assert(browser.msie, "Browser should be IE");
     test.assertEquals(browser.name, ua.ie.name,"Browser name should be " + ua.ie.name);
+
+    test.assertEquals(browser.version, "11.0", "Version should be 11.0");
+    test.assertEquals(browser.versionNumber, 11, "Version should be 11");
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser["windows phone"], "Platform should be Windows Phone");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using Microsoft Edge 12", 7, function(test) {
+  casper.userAgent(ua.msedge.windows.v_12);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+
+    test.assert(browser.msedge, "Browser should be MS Edge");
+    test.assertEquals(browser.name, ua.msedge.name,"Browser name should be " + ua.msedge.name);
 
     test.assertEquals(browser.version, "12.0", "Version should be 12.0");
     test.assertEquals(browser.versionNumber, 12, "Version should be 12");
@@ -563,6 +572,57 @@ casper.test.begin("when using IE12", 7, function(test) {
    test.done();
   });
 });
+
+casper.test.begin("when using Microsoft Edge 13", 7, function(test) {
+  casper.userAgent(ua.msedge.windows.v_13);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+
+    test.assert(browser.msedge, "Browser should be MS Edge");
+    test.assertEquals(browser.name, ua.msedge.name,"Browser name should be " + ua.msedge.name);
+
+    test.assertEquals(browser.version, "13.10586", "Version should be 13.10586");
+    test.assertEquals(browser.versionNumber, 13, "Version should be 13");
+
+    test.assert(browser.desktop, "Browser platform should be desktop");
+    test.assert(browser.win, "Platform should be Windows");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
+
+  }).run(function(){
+   test.done();
+  });
+});
+
+casper.test.begin("when using Microsoft Edge v13 on a Windows Phone", 7, function(test) {
+  casper.userAgent(ua.msedge.win_phone.v_13);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+
+    test.assert(browser.msedge, "Browser should be MS Edge");
+    test.assertEquals(browser.name, ua.msedge.name,"Browser name should be " + ua.msedge.name);
+
+    test.assertEquals(browser.version, "13.10586", "Version should be 13.10586");
+    test.assertEquals(browser.versionNumber, 13, "Version should be 13");
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser["windows phone"], "Platform should be Windows Phone");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
 
 casper.test.begin("when using Opera 15+ on Windows", 7, function(test) {
   casper.userAgent(ua.opera.v_15.windows);

@@ -49,6 +49,7 @@ You can also examine arbitrary useragents
 	$.browser.kindle
 	$.browser.linux
 	$.browser.mac
+	$.browser.msedge
 	$.browser.playbook
 	$.browser.silk
 	$.browser.win
@@ -86,6 +87,7 @@ Alternatively, you can detect for generic classifications such as desktop or mob
 ```
 
 - Support for new useragent on IE 11
+- Support for Microsoft Edge
 - Support for WebKit based Opera browsers
 - Added testing using PhantomJS and different browser user agents
 
