@@ -40,6 +40,7 @@
     var match = /(edge)\/([\w.]+)/.exec( ua ) ||
         /(opr)[\/]([\w.]+)/.exec( ua ) ||
         /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(iemobile)[\/]([\w.]+)/.exec( ua ) ||
         /(version)(applewebkit)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
         /(webkit)[ \/]([\w.]+).*(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec( ua ) ||
         /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
@@ -51,11 +52,11 @@
 
     var platform_match = /(ipad)/.exec( ua ) ||
         /(ipod)/.exec( ua ) ||
+        /(windows phone)/.exec( ua ) ||
         /(iphone)/.exec( ua ) ||
         /(kindle)/.exec( ua ) ||
         /(silk)/.exec( ua ) ||
         /(android)/.exec( ua ) ||
-        /(windows phone)/.exec( ua ) ||
         /(win)/.exec( ua ) ||
         /(mac)/.exec( ua ) ||
         /(linux)/.exec( ua ) ||
@@ -101,7 +102,7 @@
 
     // IE11 has a new token so we will assign it msie to avoid breaking changes
     // IE12 disguises itself as Chrome, but adds a new Edge token.
-    if ( browser.rv || browser.edge ) {
+    if ( browser.rv || browser.edge || browser.iemobile) {
       var ie = "msie";
 
       matched.browser = ie;
