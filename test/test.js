@@ -464,7 +464,6 @@ casper.test.begin("when using IE10", 7, function(test) {
   });
 });
 
-
 casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
   casper.userAgent(ua.ie.win_phone.v_10);
 
@@ -479,6 +478,31 @@ casper.test.begin("when using IE10 on a Windows Phone", 7, function(test) {
 
     test.assertEquals(browser.version, "10.0", "Version should be 10.0");
     test.assertEquals(browser.versionNumber, 10, "Version should be 10");
+
+    test.assert(browser.mobile, "Browser platform should be mobile");
+    test.assert(browser["windows phone"], "Platform should be Windows Phone");
+
+    test.assertFalsy(browser.webkit, "Browser should NOT be WebKit based");
+
+  }).run(function(){
+    test.done();
+  });
+});
+
+casper.test.begin("when using IE11 on a Windows Phone", 7, function(test) {
+  casper.userAgent(ua.ie.win_phone.v_11);
+
+  casper.start(test_url).then(function(){
+
+    var browser = casper.evaluate(function(){
+      return $.browser;
+    });
+
+    test.assert(browser.msie, "Browser should be IE");
+    test.assertEquals(browser.name, ua.ie.name,"Browser name should be " + ua.ie.name);
+
+    test.assertEquals(browser.version, "11.0", "Version should be 11.0");
+    test.assertEquals(browser.versionNumber, 11, "Version should be 11");
 
     test.assert(browser.mobile, "Browser platform should be mobile");
     test.assert(browser["windows phone"], "Platform should be Windows Phone");
