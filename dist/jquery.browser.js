@@ -179,10 +179,38 @@
     return browser;
   }
 
+  function addClass (obj, newClass) {
+    var oClass = obj.className;
+    if (oClass === '') {
+      obj.className = newClass;
+    } else {
+      var cutClass = oClass.split(' ');
+      
+      for (var i = 0; i < cutClass.length; i++) {
+        if (cutClass[i] == newClass) {
+          return;
+        }
+      }
+
+      obj.className = oClass + ' ' + newClass;
+    }
+  }
+
   // Run the matching process, also assign the function to the returned object
   // for manual, jQuery-free use if desired
   window.jQBrowser = uaMatch( window.navigator.userAgent );
   window.jQBrowser.uaMatch = uaMatch;
+
+  // Added css hook
+  var browser  = window.jQBrowser,
+      name     = browser.name,
+      version  = parseInt(browser.version, 10),
+      platform = browser.platform,
+      cssHook  = [];
+
+  cssHook = [].concat(cssHook, [name, (name + version), platform]);
+
+  addClass(window.document.getElementsByTagName('html')[0], cssHook.join(' '));
 
   // Only assign to jQuery.browser if jQuery is loaded
   if ( jQuery ) {
