@@ -32,7 +32,7 @@
 
   function uaMatch( ua ) {
     // If an UA is not provided, default to the current browser UA.
-    if ( ua === undefined ) {
+    if ( ua === void(0) ) {
       ua = window.navigator.userAgent;
     }
     ua = ua.toLowerCase();
